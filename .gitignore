@@ -21,3 +21,6 @@ echo-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+.nix-mix
+.nix-hex
