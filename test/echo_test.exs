@@ -1,4 +1,4 @@
-defmodule EchoTest do
+defmodule HecklerTest do
   use ExUnit.Case
-  doctest Echo
+  doctest Heckler
 end

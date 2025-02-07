@@ -1,9 +1,9 @@
-defmodule Echo.MixProject do
+defmodule Heckler.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :echo,
+      app: :heckler,
       version: "0.1.0",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
@@ -38,7 +38,8 @@ defmodule Echo.MixProject do
       {:credo, "~> 1.7.7-rc.0", only: [:test, :dev], runtime: false},
       {:dialyxir, "~> 1.0", only: [:test, :dev], runtime: false},
       {:ex_doc, "~> 0.28", only: [:test, :dev], runtime: false},
-      {:makeup_diff, "~> 0.1", only: [:test, :dev], runtime: false}
+      {:makeup_diff, "~> 0.1", only: [:test, :dev], runtime: false},
+      {:req, "~> 0.5.8"}
     ]
   end
 end

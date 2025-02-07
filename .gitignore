@@ -24,3 +24,8 @@ echo-*.tar
 
 .nix-mix
 .nix-hex
+.elixir-tools
+
+AuthKey.p8 
+aps_development.cer 
+cert.pem

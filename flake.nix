@@ -1,5 +1,5 @@
 {
-  description = "Example Elixir Project";
+  description = "Heckler Notifications";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
