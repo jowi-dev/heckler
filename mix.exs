@@ -39,7 +39,8 @@ defmodule Heckler.MixProject do
       {:dialyxir, "~> 1.0", only: [:test, :dev], runtime: false},
       {:ex_doc, "~> 0.28", only: [:test, :dev], runtime: false},
       {:makeup_diff, "~> 0.1", only: [:test, :dev], runtime: false},
-      {:req, "~> 0.5.8"}
+      {:req, "~> 0.5.8"},
+      {:tesla, "~> 1.7"}
     ]
   end
 end
