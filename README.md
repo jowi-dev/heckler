@@ -1,4 +1,4 @@
-# Echo
+# Heckler
 
 **TODO: Add description**
 
@@ -10,7 +10,7 @@ by adding `echo` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:echo, "~> 0.1.0"}
+    {:heckler, "~> 0.1.0"}
   ]
 end
 ```
