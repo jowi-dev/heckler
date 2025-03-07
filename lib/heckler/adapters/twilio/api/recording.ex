@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.Recording do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_recording(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_recording(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_recording(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -55,7 +56,8 @@ defmodule Heckler.Adapters.Twilio.Api.Recording do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountRecording.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_recording(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountRecording.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_recording(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountRecording.t()} | {:error, Tesla.Env.t()}
   def fetch_recording(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :IncludeSoftDeleted => :query
@@ -98,7 +100,8 @@ defmodule Heckler.Adapters.Twilio.Api.Recording do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListRecordingResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_recording(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListRecordingResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_recording(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListRecordingResponse.t()} | {:error, Tesla.Env.t()}
   def list_recording(connection, account_sid, opts \\ []) do
     optional_params = %{
       :DateCreated => :query,

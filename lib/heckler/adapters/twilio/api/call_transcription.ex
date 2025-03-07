@@ -38,7 +38,9 @@ defmodule Heckler.Adapters.Twilio.Api.CallTranscription do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_realtime_transcription(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription.t()} | {:error, Tesla.Env.t()}
+  @spec create_realtime_transcription(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription.t()}
+          | {:error, Tesla.Env.t()}
   def create_realtime_transcription(connection, account_sid, call_sid, opts \\ []) do
     optional_params = %{
       :Name => :form,
@@ -89,7 +91,16 @@ defmodule Heckler.Adapters.Twilio.Api.CallTranscription do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_realtime_transcription(Tesla.Env.client, String.t, String.t, String.t, Heckler.Adapters.Twilio.Model.RealtimeTranscriptionEnumUpdateStatus.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription.t()} | {:error, Tesla.Env.t()}
+  @spec update_realtime_transcription(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          Heckler.Adapters.Twilio.Model.RealtimeTranscriptionEnumUpdateStatus.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription.t()}
+          | {:error, Tesla.Env.t()}
   def update_realtime_transcription(connection, account_sid, call_sid, sid, status, _opts \\ []) do
     request =
       %{}

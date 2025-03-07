@@ -24,7 +24,9 @@ defmodule Heckler.Adapters.Twilio.Api.IpAccessControlList do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_sip_ip_access_control_list(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()} | {:error, Tesla.Env.t()}
+  @spec create_sip_ip_access_control_list(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()}
+          | {:error, Tesla.Env.t()}
   def create_sip_ip_access_control_list(connection, account_sid, friendly_name, _opts \\ []) do
     request =
       %{}
@@ -55,7 +57,8 @@ defmodule Heckler.Adapters.Twilio.Api.IpAccessControlList do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_sip_ip_access_control_list(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_sip_ip_access_control_list(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_sip_ip_access_control_list(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -85,7 +88,9 @@ defmodule Heckler.Adapters.Twilio.Api.IpAccessControlList do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_sip_ip_access_control_list(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_sip_ip_access_control_list(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_sip_ip_access_control_list(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -117,7 +122,9 @@ defmodule Heckler.Adapters.Twilio.Api.IpAccessControlList do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListSipIpAccessControlListResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_sip_ip_access_control_list(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListSipIpAccessControlListResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_sip_ip_access_control_list(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListSipIpAccessControlListResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_sip_ip_access_control_list(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -155,7 +162,15 @@ defmodule Heckler.Adapters.Twilio.Api.IpAccessControlList do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_sip_ip_access_control_list(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()} | {:error, Tesla.Env.t()}
+  @spec update_sip_ip_access_control_list(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlList.t()}
+          | {:error, Tesla.Env.t()}
   def update_sip_ip_access_control_list(connection, account_sid, sid, friendly_name, _opts \\ []) do
     request =
       %{}

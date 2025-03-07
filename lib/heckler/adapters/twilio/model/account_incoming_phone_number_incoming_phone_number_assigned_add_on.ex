@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -22,21 +22,20 @@ defmodule Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneN
   ]
 
   @type t :: %__MODULE__{
-    :sid => String.t | nil,
-    :account_sid => String.t | nil,
-    :resource_sid => String.t | nil,
-    :friendly_name => String.t | nil,
-    :description => String.t | nil,
-    :configuration => any() | nil,
-    :unique_name => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :uri => String.t | nil,
-    :subresource_uris => map() | nil
-  }
+          :sid => String.t() | nil,
+          :account_sid => String.t() | nil,
+          :resource_sid => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :description => String.t() | nil,
+          :configuration => any() | nil,
+          :unique_name => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :uri => String.t() | nil,
+          :subresource_uris => map() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

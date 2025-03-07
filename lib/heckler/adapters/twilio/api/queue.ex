@@ -25,7 +25,8 @@ defmodule Heckler.Adapters.Twilio.Api.Queue do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_queue(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()} | {:error, Tesla.Env.t()}
+  @spec create_queue(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()} | {:error, Tesla.Env.t()}
   def create_queue(connection, account_sid, friendly_name, opts \\ []) do
     optional_params = %{
       :MaxSize => :form
@@ -61,7 +62,8 @@ defmodule Heckler.Adapters.Twilio.Api.Queue do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_queue(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_queue(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_queue(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -91,7 +93,8 @@ defmodule Heckler.Adapters.Twilio.Api.Queue do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_queue(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_queue(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()} | {:error, Tesla.Env.t()}
   def fetch_queue(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -123,7 +126,8 @@ defmodule Heckler.Adapters.Twilio.Api.Queue do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListQueueResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_queue(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListQueueResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_queue(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListQueueResponse.t()} | {:error, Tesla.Env.t()}
   def list_queue(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -162,7 +166,8 @@ defmodule Heckler.Adapters.Twilio.Api.Queue do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_queue(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()} | {:error, Tesla.Env.t()}
+  @spec update_queue(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountQueue.t()} | {:error, Tesla.Env.t()}
   def update_queue(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form,

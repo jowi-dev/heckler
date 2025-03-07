@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountToken do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -18,20 +18,23 @@ defmodule Heckler.Adapters.Twilio.Model.AccountToken do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :ice_servers => [Heckler.Adapters.Twilio.Model.AccountTokenIceServersInner.t] | nil,
-    :password => String.t | nil,
-    :ttl => String.t | nil,
-    :username => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :ice_servers => [Heckler.Adapters.Twilio.Model.AccountTokenIceServersInner.t()] | nil,
+          :password => String.t() | nil,
+          :ttl => String.t() | nil,
+          :username => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:ice_servers, :list, Heckler.Adapters.Twilio.Model.AccountTokenIceServersInner)
+    |> Deserializer.deserialize(
+      :ice_servers,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountTokenIceServersInner
+    )
   end
 end
-

@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -22,21 +22,20 @@ defmodule Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultReco
   ]
 
   @type t :: %__MODULE__{
-    :sid => String.t | nil,
-    :add_on_result_sid => String.t | nil,
-    :account_sid => String.t | nil,
-    :label => String.t | nil,
-    :add_on_sid => String.t | nil,
-    :add_on_configuration_sid => String.t | nil,
-    :content_type => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :reference_sid => String.t | nil,
-    :subresource_uris => map() | nil
-  }
+          :sid => String.t() | nil,
+          :add_on_result_sid => String.t() | nil,
+          :account_sid => String.t() | nil,
+          :label => String.t() | nil,
+          :add_on_sid => String.t() | nil,
+          :add_on_configuration_sid => String.t() | nil,
+          :content_type => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :reference_sid => String.t() | nil,
+          :subresource_uris => map() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

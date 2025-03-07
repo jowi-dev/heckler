@@ -30,7 +30,9 @@ defmodule Heckler.Adapters.Twilio.Api.CallRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_call_recording(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()} | {:error, Tesla.Env.t()}
+  @spec create_call_recording(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()}
+          | {:error, Tesla.Env.t()}
   def create_call_recording(connection, account_sid, call_sid, opts \\ []) do
     optional_params = %{
       :RecordingStatusCallbackEvent => :form,
@@ -72,7 +74,8 @@ defmodule Heckler.Adapters.Twilio.Api.CallRecording do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_call_recording(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_call_recording(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_call_recording(connection, account_sid, call_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -103,7 +106,9 @@ defmodule Heckler.Adapters.Twilio.Api.CallRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_call_recording(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_call_recording(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_call_recording(connection, account_sid, call_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -139,7 +144,9 @@ defmodule Heckler.Adapters.Twilio.Api.CallRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListCallRecordingResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_call_recording(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListCallRecordingResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_call_recording(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListCallRecordingResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_call_recording(connection, account_sid, call_sid, opts \\ []) do
     optional_params = %{
       :DateCreated => :query,
@@ -182,7 +189,16 @@ defmodule Heckler.Adapters.Twilio.Api.CallRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_call_recording(Tesla.Env.client, String.t, String.t, String.t, Heckler.Adapters.Twilio.Model.CallRecordingEnumStatus.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()} | {:error, Tesla.Env.t()}
+  @spec update_call_recording(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          Heckler.Adapters.Twilio.Model.CallRecordingEnumStatus.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallRecording.t()}
+          | {:error, Tesla.Env.t()}
   def update_call_recording(connection, account_sid, call_sid, sid, status, opts \\ []) do
     optional_params = %{
       :PauseBehavior => :form

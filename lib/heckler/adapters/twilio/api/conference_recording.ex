@@ -25,12 +25,20 @@ defmodule Heckler.Adapters.Twilio.Api.ConferenceRecording do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_conference_recording(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_conference_recording(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_conference_recording(connection, account_sid, conference_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Recordings/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Recordings/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -56,12 +64,22 @@ defmodule Heckler.Adapters.Twilio.Api.ConferenceRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConferenceConferenceRecording.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_conference_recording(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceConferenceRecording.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_conference_recording(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceConferenceRecording.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_conference_recording(connection, account_sid, conference_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Recordings/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Recordings/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -92,7 +110,9 @@ defmodule Heckler.Adapters.Twilio.Api.ConferenceRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListConferenceRecordingResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_conference_recording(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListConferenceRecordingResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_conference_recording(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListConferenceRecordingResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_conference_recording(connection, account_sid, conference_sid, opts \\ []) do
     optional_params = %{
       :DateCreated => :query,
@@ -135,8 +155,24 @@ defmodule Heckler.Adapters.Twilio.Api.ConferenceRecording do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConferenceConferenceRecording.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_conference_recording(Tesla.Env.client, String.t, String.t, String.t, Heckler.Adapters.Twilio.Model.ConferenceRecordingEnumStatus.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceConferenceRecording.t()} | {:error, Tesla.Env.t()}
-  def update_conference_recording(connection, account_sid, conference_sid, sid, status, opts \\ []) do
+  @spec update_conference_recording(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          Heckler.Adapters.Twilio.Model.ConferenceRecordingEnumStatus.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceConferenceRecording.t()}
+          | {:error, Tesla.Env.t()}
+  def update_conference_recording(
+        connection,
+        account_sid,
+        conference_sid,
+        sid,
+        status,
+        opts \\ []
+      ) do
     optional_params = %{
       :PauseBehavior => :form
     }
@@ -144,7 +180,9 @@ defmodule Heckler.Adapters.Twilio.Api.ConferenceRecording do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Recordings/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Recordings/#{sid}.json"
+      )
       |> add_param(:form, :Status, status)
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])

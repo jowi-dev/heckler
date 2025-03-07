@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.ListSipIpAccessControlListMappingResponse do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -20,22 +20,27 @@ defmodule Heckler.Adapters.Twilio.Model.ListSipIpAccessControlListMappingRespons
   ]
 
   @type t :: %__MODULE__{
-    :ip_access_control_list_mappings => [Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipIpAccessControlListMapping.t] | nil,
-    :end => integer() | nil,
-    :first_page_uri => String.t | nil,
-    :next_page_uri => String.t | nil,
-    :page => integer() | nil,
-    :page_size => integer() | nil,
-    :previous_page_uri => String.t | nil,
-    :start => integer() | nil,
-    :uri => String.t | nil
-  }
+          :ip_access_control_list_mappings =>
+            [Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipIpAccessControlListMapping.t()]
+            | nil,
+          :end => integer() | nil,
+          :first_page_uri => String.t() | nil,
+          :next_page_uri => String.t() | nil,
+          :page => integer() | nil,
+          :page_size => integer() | nil,
+          :previous_page_uri => String.t() | nil,
+          :start => integer() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:ip_access_control_list_mappings, :list, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipIpAccessControlListMapping)
+    |> Deserializer.deserialize(
+      :ip_access_control_list_mappings,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipIpAccessControlListMapping
+    )
   end
 end
-

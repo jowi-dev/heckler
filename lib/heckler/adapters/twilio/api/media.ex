@@ -25,7 +25,8 @@ defmodule Heckler.Adapters.Twilio.Api.Media do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_media(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_media(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_media(connection, account_sid, message_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -56,7 +57,8 @@ defmodule Heckler.Adapters.Twilio.Api.Media do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountMessageMedia.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_media(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountMessageMedia.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_media(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountMessageMedia.t()} | {:error, Tesla.Env.t()}
   def fetch_media(connection, account_sid, message_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -92,7 +94,8 @@ defmodule Heckler.Adapters.Twilio.Api.Media do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListMediaResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_media(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListMediaResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_media(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListMediaResponse.t()} | {:error, Tesla.Env.t()}
   def list_media(connection, account_sid, message_sid, opts \\ []) do
     optional_params = %{
       :DateCreated => :query,

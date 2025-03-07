@@ -25,7 +25,8 @@ defmodule Heckler.Adapters.Twilio.Api.Member do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountQueueMember.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_member(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountQueueMember.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_member(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountQueueMember.t()} | {:error, Tesla.Env.t()}
   def fetch_member(connection, account_sid, queue_sid, call_sid, _opts \\ []) do
     request =
       %{}
@@ -58,7 +59,8 @@ defmodule Heckler.Adapters.Twilio.Api.Member do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListMemberResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_member(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListMemberResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_member(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListMemberResponse.t()} | {:error, Tesla.Env.t()}
   def list_member(connection, account_sid, queue_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -98,7 +100,14 @@ defmodule Heckler.Adapters.Twilio.Api.Member do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountQueueMember.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_member(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountQueueMember.t()} | {:error, Tesla.Env.t()}
+  @spec update_member(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, Heckler.Adapters.Twilio.Model.AccountQueueMember.t()} | {:error, Tesla.Env.t()}
   def update_member(connection, account_sid, queue_sid, call_sid, url, opts \\ []) do
     optional_params = %{
       :Method => :form

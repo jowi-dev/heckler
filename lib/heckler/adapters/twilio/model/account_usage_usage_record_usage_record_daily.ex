@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountUsageUsageRecordUsageRecordDaily do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -26,30 +26,33 @@ defmodule Heckler.Adapters.Twilio.Model.AccountUsageUsageRecordUsageRecordDaily 
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :api_version => String.t | nil,
-    :as_of => String.t | nil,
-    :category => Heckler.Adapters.Twilio.Model.UsageRecordDailyEnumCategory.t | nil,
-    :count => String.t | nil,
-    :count_unit => String.t | nil,
-    :description => String.t | nil,
-    :end_date => Date.t | nil,
-    :price => float() | nil,
-    :price_unit => String.t | nil,
-    :start_date => Date.t | nil,
-    :subresource_uris => map() | nil,
-    :uri => String.t | nil,
-    :usage => String.t | nil,
-    :usage_unit => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :api_version => String.t() | nil,
+          :as_of => String.t() | nil,
+          :category => Heckler.Adapters.Twilio.Model.UsageRecordDailyEnumCategory.t() | nil,
+          :count => String.t() | nil,
+          :count_unit => String.t() | nil,
+          :description => String.t() | nil,
+          :end_date => Date.t() | nil,
+          :price => float() | nil,
+          :price_unit => String.t() | nil,
+          :start_date => Date.t() | nil,
+          :subresource_uris => map() | nil,
+          :uri => String.t() | nil,
+          :usage => String.t() | nil,
+          :usage_unit => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:category, :struct, Heckler.Adapters.Twilio.Model.UsageRecordDailyEnumCategory)
-     |> Deserializer.deserialize(:end_date, :date, nil)
-     |> Deserializer.deserialize(:start_date, :date, nil)
+    |> Deserializer.deserialize(
+      :category,
+      :struct,
+      Heckler.Adapters.Twilio.Model.UsageRecordDailyEnumCategory
+    )
+    |> Deserializer.deserialize(:end_date, :date, nil)
+    |> Deserializer.deserialize(:start_date, :date, nil)
   end
 end
-

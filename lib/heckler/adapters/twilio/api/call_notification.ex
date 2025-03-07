@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.CallNotification do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -25,7 +25,9 @@ defmodule Heckler.Adapters.Twilio.Api.CallNotification do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallCallNotificationInstance.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_call_notification(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallNotificationInstance.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_call_notification(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallCallNotificationInstance.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_call_notification(connection, account_sid, call_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -41,7 +43,7 @@ defmodule Heckler.Adapters.Twilio.Api.CallNotification do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -62,7 +64,9 @@ defmodule Heckler.Adapters.Twilio.Api.CallNotification do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListCallNotificationResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_call_notification(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListCallNotificationResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_call_notification(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListCallNotificationResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_call_notification(connection, account_sid, call_sid, opts \\ []) do
     optional_params = %{
       :Log => :query,

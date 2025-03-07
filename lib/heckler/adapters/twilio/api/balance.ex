@@ -23,7 +23,8 @@ defmodule Heckler.Adapters.Twilio.Api.Balance do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountBalance.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_balance(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountBalance.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_balance(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountBalance.t()} | {:error, Tesla.Env.t()}
   def fetch_balance(connection, account_sid, _opts \\ []) do
     request =
       %{}

@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountConference do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -23,26 +23,34 @@ defmodule Heckler.Adapters.Twilio.Model.AccountConference do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :api_version => String.t | nil,
-    :friendly_name => String.t | nil,
-    :region => String.t | nil,
-    :sid => String.t | nil,
-    :status => Heckler.Adapters.Twilio.Model.ConferenceEnumStatus.t | nil,
-    :uri => String.t | nil,
-    :subresource_uris => map() | nil,
-    :reason_conference_ended => Heckler.Adapters.Twilio.Model.ConferenceEnumReasonConferenceEnded.t | nil,
-    :call_sid_ending_conference => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :api_version => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :region => String.t() | nil,
+          :sid => String.t() | nil,
+          :status => Heckler.Adapters.Twilio.Model.ConferenceEnumStatus.t() | nil,
+          :uri => String.t() | nil,
+          :subresource_uris => map() | nil,
+          :reason_conference_ended =>
+            Heckler.Adapters.Twilio.Model.ConferenceEnumReasonConferenceEnded.t() | nil,
+          :call_sid_ending_conference => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:status, :struct, Heckler.Adapters.Twilio.Model.ConferenceEnumStatus)
-     |> Deserializer.deserialize(:reason_conference_ended, :struct, Heckler.Adapters.Twilio.Model.ConferenceEnumReasonConferenceEnded)
+    |> Deserializer.deserialize(
+      :status,
+      :struct,
+      Heckler.Adapters.Twilio.Model.ConferenceEnumStatus
+    )
+    |> Deserializer.deserialize(
+      :reason_conference_ended,
+      :struct,
+      Heckler.Adapters.Twilio.Model.ConferenceEnumReasonConferenceEnded
+    )
   end
 end
-

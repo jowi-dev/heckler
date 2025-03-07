@@ -26,18 +26,38 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOnExtension do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_incoming_phone_number_assigned_add_on_extension(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension.t()} | {:error, Tesla.Env.t()}
-  def fetch_incoming_phone_number_assigned_add_on_extension(connection, account_sid, resource_sid, assigned_add_on_sid, sid, _opts \\ []) do
+  @spec fetch_incoming_phone_number_assigned_add_on_extension(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension.t()}
+          | {:error, Tesla.Env.t()}
+  def fetch_incoming_phone_number_assigned_add_on_extension(
+        connection,
+        account_sid,
+        resource_sid,
+        assigned_add_on_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{assigned_add_on_sid}/Extensions/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{assigned_add_on_sid}/Extensions/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension}
+      {200,
+       Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension}
     ])
   end
 
@@ -60,8 +80,23 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOnExtension do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberAssignedAddOnExtensionResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_incoming_phone_number_assigned_add_on_extension(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberAssignedAddOnExtensionResponse.t()} | {:error, Tesla.Env.t()}
-  def list_incoming_phone_number_assigned_add_on_extension(connection, account_sid, resource_sid, assigned_add_on_sid, opts \\ []) do
+  @spec list_incoming_phone_number_assigned_add_on_extension(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberAssignedAddOnExtensionResponse.t()}
+          | {:error, Tesla.Env.t()}
+  def list_incoming_phone_number_assigned_add_on_extension(
+        connection,
+        account_sid,
+        resource_sid,
+        assigned_add_on_sid,
+        opts \\ []
+      ) do
     optional_params = %{
       :PageSize => :query,
       :Page => :query,
@@ -71,7 +106,9 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOnExtension do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{assigned_add_on_sid}/Extensions.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{assigned_add_on_sid}/Extensions.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

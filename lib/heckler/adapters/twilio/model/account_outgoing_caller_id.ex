@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -18,17 +18,16 @@ defmodule Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId do
   ]
 
   @type t :: %__MODULE__{
-    :sid => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :friendly_name => String.t | nil,
-    :account_sid => String.t | nil,
-    :phone_number => String.t | nil,
-    :uri => String.t | nil
-  }
+          :sid => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :account_sid => String.t() | nil,
+          :phone_number => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

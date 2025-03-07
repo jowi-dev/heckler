@@ -29,3 +29,4 @@ echo-*.tar
 AuthKey.p8 
 aps_development.cer 
 cert.pem
+.env

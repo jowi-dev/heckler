@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.ValidationRequest do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -29,7 +29,9 @@ defmodule Heckler.Adapters.Twilio.Api.ValidationRequest do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountValidationRequest.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_validation_request(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountValidationRequest.t()} | {:error, Tesla.Env.t()}
+  @spec create_validation_request(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountValidationRequest.t()}
+          | {:error, Tesla.Env.t()}
   def create_validation_request(connection, account_sid, phone_number, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form,

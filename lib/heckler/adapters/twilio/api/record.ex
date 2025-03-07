@@ -30,7 +30,9 @@ defmodule Heckler.Adapters.Twilio.Api.Record do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListUsageRecordResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_usage_record(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListUsageRecordResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_usage_record(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListUsageRecordResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_usage_record(connection, account_sid, opts \\ []) do
     optional_params = %{
       :Category => :query,

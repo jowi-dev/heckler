@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.OutgoingCallerId do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_outgoing_caller_id(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_outgoing_caller_id(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_outgoing_caller_id(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -54,7 +55,9 @@ defmodule Heckler.Adapters.Twilio.Api.OutgoingCallerId do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_outgoing_caller_id(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_outgoing_caller_id(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_outgoing_caller_id(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -88,7 +91,9 @@ defmodule Heckler.Adapters.Twilio.Api.OutgoingCallerId do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListOutgoingCallerIdResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_outgoing_caller_id(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListOutgoingCallerIdResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_outgoing_caller_id(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListOutgoingCallerIdResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_outgoing_caller_id(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PhoneNumber => :query,
@@ -128,7 +133,9 @@ defmodule Heckler.Adapters.Twilio.Api.OutgoingCallerId do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_outgoing_caller_id(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId.t()} | {:error, Tesla.Env.t()}
+  @spec update_outgoing_caller_id(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountOutgoingCallerId.t()}
+          | {:error, Tesla.Env.t()}
   def update_outgoing_caller_id(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form

@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountRecordingRecordingTranscription do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -24,26 +24,29 @@ defmodule Heckler.Adapters.Twilio.Model.AccountRecordingRecordingTranscription d
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :api_version => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :duration => String.t | nil,
-    :price => float() | nil,
-    :price_unit => String.t | nil,
-    :recording_sid => String.t | nil,
-    :sid => String.t | nil,
-    :status => Heckler.Adapters.Twilio.Model.RecordingTranscriptionEnumStatus.t | nil,
-    :transcription_text => String.t | nil,
-    :type => String.t | nil,
-    :uri => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :api_version => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :duration => String.t() | nil,
+          :price => float() | nil,
+          :price_unit => String.t() | nil,
+          :recording_sid => String.t() | nil,
+          :sid => String.t() | nil,
+          :status => Heckler.Adapters.Twilio.Model.RecordingTranscriptionEnumStatus.t() | nil,
+          :transcription_text => String.t() | nil,
+          :type => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:status, :struct, Heckler.Adapters.Twilio.Model.RecordingTranscriptionEnumStatus)
+    |> Deserializer.deserialize(
+      :status,
+      :struct,
+      Heckler.Adapters.Twilio.Model.RecordingTranscriptionEnumStatus
+    )
   end
 end
-

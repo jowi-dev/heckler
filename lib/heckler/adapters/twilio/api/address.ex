@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -33,8 +33,28 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_address(Tesla.Env.client, String.t, String.t, String.t, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()} | {:error, Tesla.Env.t()}
-  def create_address(connection, account_sid, customer_name, street, city, region, postal_code, iso_country, opts \\ []) do
+  @spec create_address(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()} | {:error, Tesla.Env.t()}
+  def create_address(
+        connection,
+        account_sid,
+        customer_name,
+        street,
+        city,
+        region,
+        postal_code,
+        iso_country,
+        opts \\ []
+      ) do
     optional_params = %{
       :FriendlyName => :form,
       :EmergencyEnabled => :form,
@@ -63,7 +83,7 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -77,7 +97,8 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_address(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_address(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_address(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -93,7 +114,7 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -107,7 +128,8 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_address(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_address(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()} | {:error, Tesla.Env.t()}
   def fetch_address(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -123,7 +145,7 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -142,7 +164,8 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAddressResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_address(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAddressResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_address(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListAddressResponse.t()} | {:error, Tesla.Env.t()}
   def list_address(connection, account_sid, opts \\ []) do
     optional_params = %{
       :CustomerName => :query,
@@ -168,7 +191,7 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -191,7 +214,8 @@ defmodule Heckler.Adapters.Twilio.Api.Address do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_address(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()} | {:error, Tesla.Env.t()}
+  @spec update_address(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountAddress.t()} | {:error, Tesla.Env.t()}
   def update_address(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form,

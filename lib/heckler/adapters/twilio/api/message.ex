@@ -46,44 +46,46 @@ defmodule Heckler.Adapters.Twilio.Api.Message do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_message(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()} | {:error, Tesla.Env.t()}
+  @spec create_message(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()} | {:error, Tesla.Env.t()}
   def create_message(connection, account_sid, to, opts \\ []) do
-    optional_params = %{
-      :StatusCallback => :form,
-      :ApplicationSid => :form,
-      :MaxPrice => :form,
-      :ProvideFeedback => :form,
-      :Attempt => :form,
-      :ValidityPeriod => :form,
-      :ForceDelivery => :form,
-      :ContentRetention => :form,
-      :AddressRetention => :form,
-      :SmartEncoded => :form,
-      :PersistentAction => :form,
-      :ShortenUrls => :form,
-      :ScheduleType => :form,
-      :SendAt => :form,
-      :SendAsMms => :form,
-      :ContentVariables => :form,
-      :RiskCheck => :form,
-      :From => :form,
-      :MessagingServiceSid => :form,
-      :Body => :form,
-      :MediaUrl => :form,
-      :ContentSid => :form
-    }
+    # Create form with To parameter first
+    form_data = %{To: to}
 
+    # Add optional parameters to form
+    form_data =
+      Enum.reduce(opts, form_data, fn {key, value}, acc ->
+        Map.put(acc, key, value)
+      end)
+
+    # Create request with explicit form data
     request =
       %{}
       |> method(:post)
       |> url("/2010-04-01/Accounts/#{account_sid}/Messages.json")
-      |> add_param(:form, :To, to)
-      |> add_optional_params(optional_params, opts)
+      |> add_param(:headers, "content-type", "application/x-www-form-urlencoded")
+      |> Map.put(:body, form_data)
       |> Enum.into([])
-      |> IO.inspect(pretty: true, limit: :infinity)
+      |> IO.inspect(pretty: true, limit: :infinity, label: "Twilio Request")
 
-    connection
-    |> Connection.request(request)
+    result =
+      connection
+      |> IO.inspect(limit: :infinity, pretty: true, label: "Twilio Connection")
+      |> Connection.request(request)
+
+    # Log any errors
+    case result do
+      {:error, %{body: body}} when is_binary(body) ->
+        IO.inspect(body, label: "Twilio Error Response")
+
+      {:error, error} ->
+        IO.inspect(error, label: "Twilio Error")
+
+      _ ->
+        nil
+    end
+
+    result
     |> evaluate_response([
       {201, Heckler.Adapters.Twilio.Model.AccountMessage}
     ])
@@ -104,7 +106,8 @@ defmodule Heckler.Adapters.Twilio.Api.Message do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_message(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_message(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_message(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -134,7 +137,8 @@ defmodule Heckler.Adapters.Twilio.Api.Message do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_message(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_message(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()} | {:error, Tesla.Env.t()}
   def fetch_message(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -171,7 +175,8 @@ defmodule Heckler.Adapters.Twilio.Api.Message do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListMessageResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_message(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListMessageResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_message(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListMessageResponse.t()} | {:error, Tesla.Env.t()}
   def list_message(connection, account_sid, opts \\ []) do
     optional_params = %{
       :To => :query,
@@ -215,7 +220,8 @@ defmodule Heckler.Adapters.Twilio.Api.Message do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_message(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()} | {:error, Tesla.Env.t()}
+  @spec update_message(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountMessage.t()} | {:error, Tesla.Env.t()}
   def update_message(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :Body => :form,

@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_signing_key(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_signing_key(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_signing_key(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -40,7 +41,7 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -54,7 +55,8 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSigningKey.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_signing_key(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSigningKey.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_signing_key(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSigningKey.t()} | {:error, Tesla.Env.t()}
   def fetch_signing_key(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -70,7 +72,7 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -86,7 +88,9 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListSigningKeyResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_signing_key(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListSigningKeyResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_signing_key(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListSigningKeyResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_signing_key(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -109,7 +113,7 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -124,7 +128,8 @@ defmodule Heckler.Adapters.Twilio.Api.SigningKey do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSigningKey.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_signing_key(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSigningKey.t()} | {:error, Tesla.Env.t()}
+  @spec update_signing_key(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSigningKey.t()} | {:error, Tesla.Env.t()}
   def update_signing_key(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form

@@ -16,6 +16,7 @@
             docker
             elixir 
             postgresql_16
+            claude-code
           ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [inotify-tools] ;
 
             

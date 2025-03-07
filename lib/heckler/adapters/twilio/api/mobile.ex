@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.Mobile do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -45,7 +45,9 @@ defmodule Heckler.Adapters.Twilio.Api.Mobile do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberMobileResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_available_phone_number_mobile(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberMobileResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_available_phone_number_mobile(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberMobileResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_available_phone_number_mobile(connection, account_sid, country_code, opts \\ []) do
     optional_params = %{
       :AreaCode => :query,
@@ -74,7 +76,9 @@ defmodule Heckler.Adapters.Twilio.Api.Mobile do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/AvailablePhoneNumbers/#{country_code}/Mobile.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/AvailablePhoneNumbers/#{country_code}/Mobile.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

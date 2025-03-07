@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountBalance do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -14,13 +14,12 @@ defmodule Heckler.Adapters.Twilio.Model.AccountBalance do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :balance => String.t | nil,
-    :currency => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :balance => String.t() | nil,
+          :currency => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

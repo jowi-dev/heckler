@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.ShortCode do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountShortCode.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_short_code(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountShortCode.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_short_code(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountShortCode.t()} | {:error, Tesla.Env.t()}
   def fetch_short_code(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -58,7 +59,8 @@ defmodule Heckler.Adapters.Twilio.Api.ShortCode do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListShortCodeResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_short_code(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListShortCodeResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_short_code(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListShortCodeResponse.t()} | {:error, Tesla.Env.t()}
   def list_short_code(connection, account_sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :query,
@@ -103,7 +105,8 @@ defmodule Heckler.Adapters.Twilio.Api.ShortCode do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountShortCode.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_short_code(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountShortCode.t()} | {:error, Tesla.Env.t()}
+  @spec update_short_code(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountShortCode.t()} | {:error, Tesla.Env.t()}
   def update_short_code(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form,

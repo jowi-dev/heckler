@@ -26,7 +26,15 @@ defmodule Heckler.Adapters.Twilio.Api.UserDefinedMessage do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallUserDefinedMessage.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_user_defined_message(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallUserDefinedMessage.t()} | {:error, Tesla.Env.t()}
+  @spec create_user_defined_message(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallUserDefinedMessage.t()}
+          | {:error, Tesla.Env.t()}
   def create_user_defined_message(connection, account_sid, call_sid, content, opts \\ []) do
     optional_params = %{
       :IdempotencyKey => :form

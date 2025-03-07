@@ -7,7 +7,7 @@ defmodule Heckler.SMS do
   @callback send_sms(to :: String.t(), message :: String.t()) :: {:ok, map()} | {:error, term()}
 
   def send(to, message) do
-    sms_adapter = Application.get_env(Heckler, :sms_adapter)
+    sms_adapter = Application.get_env(:heckler, Heckler)[:sms_adapter]
 
     sms_adapter.send_sms(to, message)
   end

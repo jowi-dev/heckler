@@ -40,8 +40,23 @@ defmodule Heckler.Adapters.Twilio.Api.Payment do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallPayments.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_payments(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallPayments.t()} | {:error, Tesla.Env.t()}
-  def create_payments(connection, account_sid, call_sid, idempotency_key, status_callback, opts \\ []) do
+  @spec create_payments(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallPayments.t()} | {:error, Tesla.Env.t()}
+  def create_payments(
+        connection,
+        account_sid,
+        call_sid,
+        idempotency_key,
+        status_callback,
+        opts \\ []
+      ) do
     optional_params = %{
       :BankAccountType => :form,
       :ChargeAmount => :form,
@@ -95,8 +110,25 @@ defmodule Heckler.Adapters.Twilio.Api.Payment do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallPayments.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_payments(Tesla.Env.client, String.t, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallPayments.t()} | {:error, Tesla.Env.t()}
-  def update_payments(connection, account_sid, call_sid, sid, idempotency_key, status_callback, opts \\ []) do
+  @spec update_payments(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallPayments.t()} | {:error, Tesla.Env.t()}
+  def update_payments(
+        connection,
+        account_sid,
+        call_sid,
+        sid,
+        idempotency_key,
+        status_callback,
+        opts \\ []
+      ) do
     optional_params = %{
       :Capture => :form,
       :Status => :form

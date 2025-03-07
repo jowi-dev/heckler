@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.ListNotificationResponse do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -20,22 +20,25 @@ defmodule Heckler.Adapters.Twilio.Model.ListNotificationResponse do
   ]
 
   @type t :: %__MODULE__{
-    :notifications => [Heckler.Adapters.Twilio.Model.AccountNotification.t] | nil,
-    :end => integer() | nil,
-    :first_page_uri => String.t | nil,
-    :next_page_uri => String.t | nil,
-    :page => integer() | nil,
-    :page_size => integer() | nil,
-    :previous_page_uri => String.t | nil,
-    :start => integer() | nil,
-    :uri => String.t | nil
-  }
+          :notifications => [Heckler.Adapters.Twilio.Model.AccountNotification.t()] | nil,
+          :end => integer() | nil,
+          :first_page_uri => String.t() | nil,
+          :next_page_uri => String.t() | nil,
+          :page => integer() | nil,
+          :page_size => integer() | nil,
+          :previous_page_uri => String.t() | nil,
+          :start => integer() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:notifications, :list, Heckler.Adapters.Twilio.Model.AccountNotification)
+    |> Deserializer.deserialize(
+      :notifications,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountNotification
+    )
   end
 end
-

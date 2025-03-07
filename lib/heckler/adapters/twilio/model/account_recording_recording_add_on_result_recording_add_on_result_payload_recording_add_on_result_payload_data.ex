@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadRecordingAddOnResultPayloadData do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -12,11 +12,10 @@ defmodule Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultReco
   ]
 
   @type t :: %__MODULE__{
-    :redirect_to => String.t | nil
-  }
+          :redirect_to => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

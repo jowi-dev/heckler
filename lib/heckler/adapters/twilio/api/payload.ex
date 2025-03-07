@@ -26,12 +26,28 @@ defmodule Heckler.Adapters.Twilio.Api.Payload do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_recording_add_on_result_payload(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
-  def delete_recording_add_on_result_payload(connection, account_sid, reference_sid, add_on_result_sid, sid, _opts \\ []) do
+  @spec delete_recording_add_on_result_payload(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  def delete_recording_add_on_result_payload(
+        connection,
+        account_sid,
+        reference_sid,
+        add_on_result_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{add_on_result_sid}/Payloads/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{add_on_result_sid}/Payloads/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -58,18 +74,38 @@ defmodule Heckler.Adapters.Twilio.Api.Payload do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_recording_add_on_result_payload(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload.t()} | {:error, Tesla.Env.t()}
-  def fetch_recording_add_on_result_payload(connection, account_sid, reference_sid, add_on_result_sid, sid, _opts \\ []) do
+  @spec fetch_recording_add_on_result_payload(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload.t()}
+          | {:error, Tesla.Env.t()}
+  def fetch_recording_add_on_result_payload(
+        connection,
+        account_sid,
+        reference_sid,
+        add_on_result_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{add_on_result_sid}/Payloads/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{add_on_result_sid}/Payloads/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload}
+      {200,
+       Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload}
     ])
   end
 
@@ -92,8 +128,22 @@ defmodule Heckler.Adapters.Twilio.Api.Payload do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListRecordingAddOnResultPayloadResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_recording_add_on_result_payload(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListRecordingAddOnResultPayloadResponse.t()} | {:error, Tesla.Env.t()}
-  def list_recording_add_on_result_payload(connection, account_sid, reference_sid, add_on_result_sid, opts \\ []) do
+  @spec list_recording_add_on_result_payload(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListRecordingAddOnResultPayloadResponse.t()}
+          | {:error, Tesla.Env.t()}
+  def list_recording_add_on_result_payload(
+        connection,
+        account_sid,
+        reference_sid,
+        add_on_result_sid,
+        opts \\ []
+      ) do
     optional_params = %{
       :PageSize => :query,
       :Page => :query,
@@ -103,7 +153,9 @@ defmodule Heckler.Adapters.Twilio.Api.Payload do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{add_on_result_sid}/Payloads.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{add_on_result_sid}/Payloads.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

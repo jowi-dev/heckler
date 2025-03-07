@@ -23,7 +23,8 @@ defmodule Heckler.Adapters.Twilio.Api.Account do
   - `{:ok, Heckler.Adapters.Twilio.Model.Account.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_account(Tesla.Env.client, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.Account.t()} | {:error, Tesla.Env.t()}
+  @spec create_account(Tesla.Env.client(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.Account.t()} | {:error, Tesla.Env.t()}
   def create_account(connection, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form
@@ -58,7 +59,8 @@ defmodule Heckler.Adapters.Twilio.Api.Account do
   - `{:ok, Heckler.Adapters.Twilio.Model.Account.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_account(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.Account.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_account(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.Account.t()} | {:error, Tesla.Env.t()}
   def fetch_account(connection, sid, _opts \\ []) do
     request =
       %{}
@@ -91,7 +93,8 @@ defmodule Heckler.Adapters.Twilio.Api.Account do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAccountResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_account(Tesla.Env.client, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAccountResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_account(Tesla.Env.client(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListAccountResponse.t()} | {:error, Tesla.Env.t()}
   def list_account(connection, opts \\ []) do
     optional_params = %{
       :FriendlyName => :query,
@@ -131,7 +134,8 @@ defmodule Heckler.Adapters.Twilio.Api.Account do
   - `{:ok, Heckler.Adapters.Twilio.Model.Account.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_account(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.Account.t()} | {:error, Tesla.Env.t()}
+  @spec update_account(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.Account.t()} | {:error, Tesla.Env.t()}
   def update_account(connection, sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form,

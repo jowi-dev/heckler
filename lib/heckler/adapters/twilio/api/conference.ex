@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.Conference do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConference.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_conference(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConference.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_conference(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConference.t()} | {:error, Tesla.Env.t()}
   def fetch_conference(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -64,7 +65,9 @@ defmodule Heckler.Adapters.Twilio.Api.Conference do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListConferenceResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_conference(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListConferenceResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_conference(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListConferenceResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_conference(connection, account_sid, opts \\ []) do
     optional_params = %{
       :DateCreated => :query,
@@ -95,7 +98,7 @@ defmodule Heckler.Adapters.Twilio.Api.Conference do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -112,7 +115,8 @@ defmodule Heckler.Adapters.Twilio.Api.Conference do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConference.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_conference(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConference.t()} | {:error, Tesla.Env.t()}
+  @spec update_conference(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConference.t()} | {:error, Tesla.Env.t()}
   def update_conference(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :Status => :form,

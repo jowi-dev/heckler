@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.ConnectApp do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_connect_app(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_connect_app(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_connect_app(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -54,7 +55,8 @@ defmodule Heckler.Adapters.Twilio.Api.ConnectApp do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConnectApp.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_connect_app(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConnectApp.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_connect_app(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConnectApp.t()} | {:error, Tesla.Env.t()}
   def fetch_connect_app(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -86,7 +88,9 @@ defmodule Heckler.Adapters.Twilio.Api.ConnectApp do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListConnectAppResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_connect_app(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListConnectAppResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_connect_app(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListConnectAppResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_connect_app(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -131,7 +135,8 @@ defmodule Heckler.Adapters.Twilio.Api.ConnectApp do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConnectApp.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_connect_app(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConnectApp.t()} | {:error, Tesla.Env.t()}
+  @spec update_connect_app(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConnectApp.t()} | {:error, Tesla.Env.t()}
   def update_connect_app(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :AuthorizeRedirectUrl => :form,

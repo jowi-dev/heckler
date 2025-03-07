@@ -25,19 +25,37 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOn do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_incoming_phone_number_assigned_add_on(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.t()} | {:error, Tesla.Env.t()}
-  def create_incoming_phone_number_assigned_add_on(connection, account_sid, resource_sid, installed_add_on_sid, _opts \\ []) do
+  @spec create_incoming_phone_number_assigned_add_on(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.t()}
+          | {:error, Tesla.Env.t()}
+  def create_incoming_phone_number_assigned_add_on(
+        connection,
+        account_sid,
+        resource_sid,
+        installed_add_on_sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns.json"
+      )
       |> add_param(:form, :InstalledAddOnSid, installed_add_on_sid)
       |> Enum.into([])
 
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {201, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn}
+      {201,
+       Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn}
     ])
   end
 
@@ -57,12 +75,26 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOn do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_incoming_phone_number_assigned_add_on(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
-  def delete_incoming_phone_number_assigned_add_on(connection, account_sid, resource_sid, sid, _opts \\ []) do
+  @spec delete_incoming_phone_number_assigned_add_on(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  def delete_incoming_phone_number_assigned_add_on(
+        connection,
+        account_sid,
+        resource_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -88,18 +120,36 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOn do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_incoming_phone_number_assigned_add_on(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.t()} | {:error, Tesla.Env.t()}
-  def fetch_incoming_phone_number_assigned_add_on(connection, account_sid, resource_sid, sid, _opts \\ []) do
+  @spec fetch_incoming_phone_number_assigned_add_on(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.t()}
+          | {:error, Tesla.Env.t()}
+  def fetch_incoming_phone_number_assigned_add_on(
+        connection,
+        account_sid,
+        resource_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn}
+      {200,
+       Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn}
     ])
   end
 
@@ -121,8 +171,20 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOn do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberAssignedAddOnResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_incoming_phone_number_assigned_add_on(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberAssignedAddOnResponse.t()} | {:error, Tesla.Env.t()}
-  def list_incoming_phone_number_assigned_add_on(connection, account_sid, resource_sid, opts \\ []) do
+  @spec list_incoming_phone_number_assigned_add_on(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberAssignedAddOnResponse.t()}
+          | {:error, Tesla.Env.t()}
+  def list_incoming_phone_number_assigned_add_on(
+        connection,
+        account_sid,
+        resource_sid,
+        opts \\ []
+      ) do
     optional_params = %{
       :PageSize => :query,
       :Page => :query,
@@ -132,7 +194,9 @@ defmodule Heckler.Adapters.Twilio.Api.AssignedAddOn do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/IncomingPhoneNumbers/#{resource_sid}/AssignedAddOns.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

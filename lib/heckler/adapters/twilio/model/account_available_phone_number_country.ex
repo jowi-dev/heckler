@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountry do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -16,15 +16,14 @@ defmodule Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountry do
   ]
 
   @type t :: %__MODULE__{
-    :country_code => String.t | nil,
-    :country => String.t | nil,
-    :uri => String.t | nil,
-    :beta => boolean() | nil,
-    :subresource_uris => map() | nil
-  }
+          :country_code => String.t() | nil,
+          :country => String.t() | nil,
+          :uri => String.t() | nil,
+          :beta => boolean() | nil,
+          :subresource_uris => map() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

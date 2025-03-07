@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountMessageMessageFeedback do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -17,19 +17,22 @@ defmodule Heckler.Adapters.Twilio.Model.AccountMessageMessageFeedback do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :message_sid => String.t | nil,
-    :outcome => Heckler.Adapters.Twilio.Model.MessageFeedbackEnumOutcome.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :uri => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :message_sid => String.t() | nil,
+          :outcome => Heckler.Adapters.Twilio.Model.MessageFeedbackEnumOutcome.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:outcome, :struct, Heckler.Adapters.Twilio.Model.MessageFeedbackEnumOutcome)
+    |> Deserializer.deserialize(
+      :outcome,
+      :struct,
+      Heckler.Adapters.Twilio.Model.MessageFeedbackEnumOutcome
+    )
   end
 end
-

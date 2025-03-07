@@ -24,7 +24,9 @@ defmodule Heckler.Adapters.Twilio.Api.AuthorizedConnectApp do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountAuthorizedConnectApp.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_authorized_connect_app(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountAuthorizedConnectApp.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_authorized_connect_app(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountAuthorizedConnectApp.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_authorized_connect_app(connection, account_sid, connect_app_sid, _opts \\ []) do
     request =
       %{}
@@ -56,7 +58,9 @@ defmodule Heckler.Adapters.Twilio.Api.AuthorizedConnectApp do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAuthorizedConnectAppResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_authorized_connect_app(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAuthorizedConnectAppResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_authorized_connect_app(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListAuthorizedConnectAppResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_authorized_connect_app(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,

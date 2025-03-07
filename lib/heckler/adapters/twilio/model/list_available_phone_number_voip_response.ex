@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberVoipResponse do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -20,22 +20,29 @@ defmodule Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberVoipResponse do
   ]
 
   @type t :: %__MODULE__{
-    :available_phone_numbers => [Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip.t] | nil,
-    :end => integer() | nil,
-    :first_page_uri => String.t | nil,
-    :next_page_uri => String.t | nil,
-    :page => integer() | nil,
-    :page_size => integer() | nil,
-    :previous_page_uri => String.t | nil,
-    :start => integer() | nil,
-    :uri => String.t | nil
-  }
+          :available_phone_numbers =>
+            [
+              Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip.t()
+            ]
+            | nil,
+          :end => integer() | nil,
+          :first_page_uri => String.t() | nil,
+          :next_page_uri => String.t() | nil,
+          :page => integer() | nil,
+          :page_size => integer() | nil,
+          :previous_page_uri => String.t() | nil,
+          :start => integer() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:available_phone_numbers, :list, Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip)
+    |> Deserializer.deserialize(
+      :available_phone_numbers,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip
+    )
   end
 end
-

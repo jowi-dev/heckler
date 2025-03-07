@@ -25,12 +25,20 @@ defmodule Heckler.Adapters.Twilio.Api.AddOnResult do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_recording_add_on_result(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_recording_add_on_result(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_recording_add_on_result(connection, account_sid, reference_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -56,12 +64,22 @@ defmodule Heckler.Adapters.Twilio.Api.AddOnResult do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResult.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_recording_add_on_result(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResult.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_recording_add_on_result(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingAddOnResult.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_recording_add_on_result(connection, account_sid, reference_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{reference_sid}/AddOnResults/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -89,7 +107,9 @@ defmodule Heckler.Adapters.Twilio.Api.AddOnResult do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListRecordingAddOnResultResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_recording_add_on_result(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListRecordingAddOnResultResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_recording_add_on_result(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListRecordingAddOnResultResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_recording_add_on_result(connection, account_sid, reference_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,

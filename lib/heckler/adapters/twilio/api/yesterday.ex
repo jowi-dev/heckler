@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.Yesterday do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -30,7 +30,9 @@ defmodule Heckler.Adapters.Twilio.Api.Yesterday do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListUsageRecordYesterdayResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_usage_record_yesterday(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListUsageRecordYesterdayResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_usage_record_yesterday(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListUsageRecordYesterdayResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_usage_record_yesterday(connection, account_sid, opts \\ []) do
     optional_params = %{
       :Category => :query,

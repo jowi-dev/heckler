@@ -26,12 +26,30 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_sip_credential(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()} | {:error, Tesla.Env.t()}
-  def create_sip_credential(connection, account_sid, credential_list_sid, username, password, _opts \\ []) do
+  @spec create_sip_credential(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()}
+          | {:error, Tesla.Env.t()}
+  def create_sip_credential(
+        connection,
+        account_sid,
+        credential_list_sid,
+        username,
+        password,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials.json"
+      )
       |> add_param(:form, :Username, username)
       |> add_param(:form, :Password, password)
       |> Enum.into([])
@@ -59,12 +77,15 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_sip_credential(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_sip_credential(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_sip_credential(connection, account_sid, credential_list_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -90,12 +111,16 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_sip_credential(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_sip_credential(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_sip_credential(connection, account_sid, credential_list_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -123,7 +148,9 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListSipCredentialResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_sip_credential(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListSipCredentialResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_sip_credential(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListSipCredentialResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_sip_credential(connection, account_sid, credential_list_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -134,7 +161,9 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 
@@ -162,7 +191,9 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_sip_credential(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()} | {:error, Tesla.Env.t()}
+  @spec update_sip_credential(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()}
+          | {:error, Tesla.Env.t()}
   def update_sip_credential(connection, account_sid, credential_list_sid, sid, opts \\ []) do
     optional_params = %{
       :Password => :form
@@ -171,7 +202,9 @@ defmodule Heckler.Adapters.Twilio.Api.Credential do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/CredentialLists/#{credential_list_sid}/Credentials/#{sid}.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])

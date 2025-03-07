@@ -27,7 +27,8 @@ defmodule Heckler.Adapters.Twilio.Api.Event do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListCallEventResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_call_event(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListCallEventResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_call_event(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListCallEventResponse.t()} | {:error, Tesla.Env.t()}
   def list_call_event(connection, account_sid, call_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,

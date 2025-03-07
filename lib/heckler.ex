@@ -1,12 +1,12 @@
 defmodule Heckler do
   use Supervisor
+
   @moduledoc """
   Heckler is a notification library designed to minimize the pain of talking to your users.
 
   The goals of Heckler are to provide a simple interface for scheduling, sending, and retrying notifications so that you can focus on the features that are unique to your application.
   To get started, review the tasks available via `mix help heckler`, or generate a new push notification via `mix heckler.gen.push $NAME`. Options for each command are explained in a familiar `mix help heckler.gen.push`
   """
-
 
   @spec start_link([Supervisor.option()]) :: Supervisor.on_start()
   def start_link(opts) when is_list(opts) do
@@ -18,7 +18,8 @@ defmodule Heckler do
     children = [
       {Heckler.APNS, apns_opts()}
     ]
-    Supervisor.init(children, [strategy: :one_for_one, name: Heckler.Supervisor])
+
+    Supervisor.init(children, strategy: :one_for_one, name: Heckler.Supervisor)
   end
 
   @doc false

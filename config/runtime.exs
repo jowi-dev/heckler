@@ -1,6 +1,6 @@
 import Config
 
-#config :heckler, Heckler.APNS,
+# config :heckler, Heckler.APNS,
 #  adapter: Pigeon.APNS,
 #  cert: File.read!("cert.pem"),
 #  key: File.read!("cert.pem"),

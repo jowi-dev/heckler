@@ -227,7 +227,8 @@ defmodule Heckler.Adapters.Twilio.Api.Siprec do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallSiprec.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_siprec(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallSiprec.t()} | {:error, Tesla.Env.t()}
+  @spec create_siprec(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallSiprec.t()} | {:error, Tesla.Env.t()}
   def create_siprec(connection, account_sid, call_sid, opts \\ []) do
     optional_params = %{
       :Name => :form,
@@ -467,7 +468,14 @@ defmodule Heckler.Adapters.Twilio.Api.Siprec do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallSiprec.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_siprec(Tesla.Env.client, String.t, String.t, String.t, Heckler.Adapters.Twilio.Model.SiprecEnumUpdateStatus.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallSiprec.t()} | {:error, Tesla.Env.t()}
+  @spec update_siprec(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          Heckler.Adapters.Twilio.Model.SiprecEnumUpdateStatus.t(),
+          keyword()
+        ) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallSiprec.t()} | {:error, Tesla.Env.t()}
   def update_siprec(connection, account_sid, call_sid, sid, status, _opts \\ []) do
     request =
       %{}

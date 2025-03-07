@@ -23,7 +23,6 @@ defmodule Heckler.Adapters.Twilio.Connection do
                       "https://api.twilio.com"
                     )
 
-
   @typedoc """
   The list of options that can be passed to new/1.
 
@@ -36,7 +35,7 @@ defmodule Heckler.Adapters.Twilio.Connection do
           {:base_url, String.t()},
           {:user_agent, String.t()},
           {:username, String.t() | nil},
-          {:password, String.t() | nil},
+          {:password, String.t() | nil}
         ]
 
   @doc "Forward requests to Tesla."
@@ -89,7 +88,6 @@ defmodule Heckler.Adapters.Twilio.Connection do
   """
   @spec new(String.t(), String.t(), options) :: Tesla.Env.client()
 
-
   def new(username, password, options) when is_binary(username) and is_binary(password) do
     options
     |> Keyword.merge(username: username, password: password)
@@ -125,6 +123,7 @@ defmodule Heckler.Adapters.Twilio.Connection do
 
     username = Keyword.get(options, :username)
     password = Keyword.get(options, :password)
+
     middleware =
       if username || password do
         [{Tesla.Middleware.BasicAuth, %{username: username, password: password}} | middleware]
@@ -132,22 +131,31 @@ defmodule Heckler.Adapters.Twilio.Connection do
         middleware
       end
 
-
     [
       {Tesla.Middleware.BaseUrl, base_url},
-      {Tesla.Middleware.Headers, [{"user-agent", user_agent}]},
+      {Tesla.Middleware.Headers,
+       [{"user-agent", user_agent}, {"Content-Type", "application/x-www-form-urlencoded"}]},
+      # Add this middleware to handle form encoding
+      {Tesla.Middleware.FormUrlencoded, []},
       {Tesla.Middleware.EncodeJson, engine: json_engine}
       | middleware
     ]
   end
 
-
   @doc """
   Returns the default adapter for this API.
   """
   def adapter do
-    :tesla
-    |> Application.get_env(__MODULE__, [])
-    |> Keyword.get(:adapter, nil)
+    adapter =
+      :tesla
+      |> Application.get_env(__MODULE__, [])
+      |> Keyword.get(:adapter, nil)
+
+    # Fall back to global Tesla adapter if none specified for this module
+    if is_nil(adapter) do
+      Application.get_env(:tesla, :adapter, Tesla.Adapter.Hackney)
+    else
+      adapter
+    end
   end
 end

@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountConnectApp do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -22,24 +22,27 @@ defmodule Heckler.Adapters.Twilio.Model.AccountConnectApp do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :authorize_redirect_url => String.t | nil,
-    :company_name => String.t | nil,
-    :deauthorize_callback_method => String.t | nil,
-    :deauthorize_callback_url => String.t | nil,
-    :description => String.t | nil,
-    :friendly_name => String.t | nil,
-    :homepage_url => String.t | nil,
-    :permissions => [Heckler.Adapters.Twilio.Model.ConnectAppEnumPermission.t] | nil,
-    :sid => String.t | nil,
-    :uri => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :authorize_redirect_url => String.t() | nil,
+          :company_name => String.t() | nil,
+          :deauthorize_callback_method => String.t() | nil,
+          :deauthorize_callback_url => String.t() | nil,
+          :description => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :homepage_url => String.t() | nil,
+          :permissions => [Heckler.Adapters.Twilio.Model.ConnectAppEnumPermission.t()] | nil,
+          :sid => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:permissions, :list, Heckler.Adapters.Twilio.Model.ConnectAppEnumPermission)
+    |> Deserializer.deserialize(
+      :permissions,
+      :list,
+      Heckler.Adapters.Twilio.Model.ConnectAppEnumPermission
+    )
   end
 end
-

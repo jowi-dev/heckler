@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountShortCode do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -23,22 +23,21 @@ defmodule Heckler.Adapters.Twilio.Model.AccountShortCode do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :api_version => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :friendly_name => String.t | nil,
-    :short_code => String.t | nil,
-    :sid => String.t | nil,
-    :sms_fallback_method => String.t | nil,
-    :sms_fallback_url => String.t | nil,
-    :sms_method => String.t | nil,
-    :sms_url => String.t | nil,
-    :uri => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :api_version => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :short_code => String.t() | nil,
+          :sid => String.t() | nil,
+          :sms_fallback_method => String.t() | nil,
+          :sms_fallback_url => String.t() | nil,
+          :sms_method => String.t() | nil,
+          :sms_url => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

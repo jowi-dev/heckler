@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountQueueMember do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -17,16 +17,15 @@ defmodule Heckler.Adapters.Twilio.Model.AccountQueueMember do
   ]
 
   @type t :: %__MODULE__{
-    :call_sid => String.t | nil,
-    :date_enqueued => String.t | nil,
-    :position => integer() | nil,
-    :uri => String.t | nil,
-    :wait_time => integer() | nil,
-    :queue_sid => String.t | nil
-  }
+          :call_sid => String.t() | nil,
+          :date_enqueued => String.t() | nil,
+          :position => integer() | nil,
+          :uri => String.t() | nil,
+          :wait_time => integer() | nil,
+          :queue_sid => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

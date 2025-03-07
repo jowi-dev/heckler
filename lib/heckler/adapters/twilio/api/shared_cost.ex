@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.SharedCost do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -45,7 +45,14 @@ defmodule Heckler.Adapters.Twilio.Api.SharedCost do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberSharedCostResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_available_phone_number_shared_cost(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberSharedCostResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_available_phone_number_shared_cost(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberSharedCostResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_available_phone_number_shared_cost(connection, account_sid, country_code, opts \\ []) do
     optional_params = %{
       :AreaCode => :query,
@@ -74,7 +81,9 @@ defmodule Heckler.Adapters.Twilio.Api.SharedCost do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/AvailablePhoneNumbers/#{country_code}/SharedCost.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/AvailablePhoneNumbers/#{country_code}/SharedCost.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

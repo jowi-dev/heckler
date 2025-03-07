@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.ListSipCredentialResponse do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -20,22 +20,26 @@ defmodule Heckler.Adapters.Twilio.Model.ListSipCredentialResponse do
   ]
 
   @type t :: %__MODULE__{
-    :credentials => [Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t] | nil,
-    :end => integer() | nil,
-    :first_page_uri => String.t | nil,
-    :next_page_uri => String.t | nil,
-    :page => integer() | nil,
-    :page_size => integer() | nil,
-    :previous_page_uri => String.t | nil,
-    :start => integer() | nil,
-    :uri => String.t | nil
-  }
+          :credentials =>
+            [Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential.t()] | nil,
+          :end => integer() | nil,
+          :first_page_uri => String.t() | nil,
+          :next_page_uri => String.t() | nil,
+          :page => integer() | nil,
+          :page_size => integer() | nil,
+          :previous_page_uri => String.t() | nil,
+          :start => integer() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:credentials, :list, Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential)
+    |> Deserializer.deserialize(
+      :credentials,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountSipSipCredentialListSipCredential
+    )
   end
 end
-

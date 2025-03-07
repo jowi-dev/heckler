@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.MachineToMachine do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -45,8 +45,21 @@ defmodule Heckler.Adapters.Twilio.Api.MachineToMachine do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberMachineToMachineResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_available_phone_number_machine_to_machine(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberMachineToMachineResponse.t()} | {:error, Tesla.Env.t()}
-  def list_available_phone_number_machine_to_machine(connection, account_sid, country_code, opts \\ []) do
+  @spec list_available_phone_number_machine_to_machine(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberMachineToMachineResponse.t()}
+          | {:error, Tesla.Env.t()}
+  def list_available_phone_number_machine_to_machine(
+        connection,
+        account_sid,
+        country_code,
+        opts \\ []
+      ) do
     optional_params = %{
       :AreaCode => :query,
       :Contains => :query,
@@ -74,7 +87,9 @@ defmodule Heckler.Adapters.Twilio.Api.MachineToMachine do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/AvailablePhoneNumbers/#{country_code}/MachineToMachine.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/AvailablePhoneNumbers/#{country_code}/MachineToMachine.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

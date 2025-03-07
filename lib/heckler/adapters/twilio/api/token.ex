@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.Token do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountToken.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_token(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountToken.t()} | {:error, Tesla.Env.t()}
+  @spec create_token(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountToken.t()} | {:error, Tesla.Env.t()}
   def create_token(connection, account_sid, opts \\ []) do
     optional_params = %{
       :Ttl => :form

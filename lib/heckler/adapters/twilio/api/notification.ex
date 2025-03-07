@@ -24,7 +24,9 @@ defmodule Heckler.Adapters.Twilio.Api.Notification do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountNotificationInstance.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_notification(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountNotificationInstance.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_notification(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountNotificationInstance.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_notification(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -60,7 +62,9 @@ defmodule Heckler.Adapters.Twilio.Api.Notification do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListNotificationResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_notification(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListNotificationResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_notification(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListNotificationResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_notification(connection, account_sid, opts \\ []) do
     optional_params = %{
       :Log => :query,

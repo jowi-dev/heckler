@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountTokenIceServersInner do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -15,14 +15,13 @@ defmodule Heckler.Adapters.Twilio.Model.AccountTokenIceServersInner do
   ]
 
   @type t :: %__MODULE__{
-    :credential => String.t | nil,
-    :username => String.t | nil,
-    :url => String.t | nil,
-    :urls => String.t | nil
-  }
+          :credential => String.t() | nil,
+          :username => String.t() | nil,
+          :url => String.t() | nil,
+          :urls => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

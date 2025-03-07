@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -18,20 +18,23 @@ defmodule Heckler.Adapters.Twilio.Model.AccountCallRealtimeTranscription do
   ]
 
   @type t :: %__MODULE__{
-    :sid => String.t | nil,
-    :account_sid => String.t | nil,
-    :call_sid => String.t | nil,
-    :name => String.t | nil,
-    :status => Heckler.Adapters.Twilio.Model.RealtimeTranscriptionEnumStatus.t | nil,
-    :date_updated => String.t | nil,
-    :uri => String.t | nil
-  }
+          :sid => String.t() | nil,
+          :account_sid => String.t() | nil,
+          :call_sid => String.t() | nil,
+          :name => String.t() | nil,
+          :status => Heckler.Adapters.Twilio.Model.RealtimeTranscriptionEnumStatus.t() | nil,
+          :date_updated => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:status, :struct, Heckler.Adapters.Twilio.Model.RealtimeTranscriptionEnumStatus)
+    |> Deserializer.deserialize(
+      :status,
+      :struct,
+      Heckler.Adapters.Twilio.Model.RealtimeTranscriptionEnumStatus
+    )
   end
 end
-

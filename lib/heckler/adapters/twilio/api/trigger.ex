@@ -30,8 +30,24 @@ defmodule Heckler.Adapters.Twilio.Api.Trigger do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_usage_trigger(Tesla.Env.client, String.t, String.t, String.t, Heckler.Adapters.Twilio.Model.UsageTriggerEnumUsageCategory.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()} | {:error, Tesla.Env.t()}
-  def create_usage_trigger(connection, account_sid, callback_url, trigger_value, usage_category, opts \\ []) do
+  @spec create_usage_trigger(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          Heckler.Adapters.Twilio.Model.UsageTriggerEnumUsageCategory.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()}
+          | {:error, Tesla.Env.t()}
+  def create_usage_trigger(
+        connection,
+        account_sid,
+        callback_url,
+        trigger_value,
+        usage_category,
+        opts \\ []
+      ) do
     optional_params = %{
       :CallbackMethod => :form,
       :FriendlyName => :form,
@@ -57,7 +73,7 @@ defmodule Heckler.Adapters.Twilio.Api.Trigger do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -71,7 +87,8 @@ defmodule Heckler.Adapters.Twilio.Api.Trigger do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_usage_trigger(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_usage_trigger(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_usage_trigger(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -101,7 +118,9 @@ defmodule Heckler.Adapters.Twilio.Api.Trigger do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_usage_trigger(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_usage_trigger(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_usage_trigger(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -136,7 +155,9 @@ defmodule Heckler.Adapters.Twilio.Api.Trigger do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListUsageTriggerResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_usage_trigger(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListUsageTriggerResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_usage_trigger(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListUsageTriggerResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_usage_trigger(connection, account_sid, opts \\ []) do
     optional_params = %{
       :Recurring => :query,
@@ -179,7 +200,9 @@ defmodule Heckler.Adapters.Twilio.Api.Trigger do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_usage_trigger(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()} | {:error, Tesla.Env.t()}
+  @spec update_usage_trigger(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountUsageUsageTrigger.t()}
+          | {:error, Tesla.Env.t()}
   def update_usage_trigger(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :CallbackMethod => :form,

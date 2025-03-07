@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.Transcription do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_transcription(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_transcription(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_transcription(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -54,7 +55,8 @@ defmodule Heckler.Adapters.Twilio.Api.Transcription do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountTranscription.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_transcription(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountTranscription.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_transcription(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountTranscription.t()} | {:error, Tesla.Env.t()}
   def fetch_transcription(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -86,7 +88,9 @@ defmodule Heckler.Adapters.Twilio.Api.Transcription do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListTranscriptionResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_transcription(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListTranscriptionResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_transcription(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListTranscriptionResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_transcription(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,

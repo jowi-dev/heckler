@@ -27,8 +27,24 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_sip_ip_address(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()} | {:error, Tesla.Env.t()}
-  def create_sip_ip_address(connection, account_sid, ip_access_control_list_sid, friendly_name, ip_address, opts \\ []) do
+  @spec create_sip_ip_address(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()}
+          | {:error, Tesla.Env.t()}
+  def create_sip_ip_address(
+        connection,
+        account_sid,
+        ip_access_control_list_sid,
+        friendly_name,
+        ip_address,
+        opts \\ []
+      ) do
     optional_params = %{
       :CidrPrefixLength => :form
     }
@@ -36,7 +52,9 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses.json"
+      )
       |> add_param(:form, :FriendlyName, friendly_name)
       |> add_param(:form, :IpAddress, ip_address)
       |> add_optional_params(optional_params, opts)
@@ -65,12 +83,15 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_sip_ip_address(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_sip_ip_address(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_sip_ip_address(connection, account_sid, ip_access_control_list_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -96,12 +117,16 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_sip_ip_address(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_sip_ip_address(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_sip_ip_address(connection, account_sid, ip_access_control_list_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -129,7 +154,9 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListSipIpAddressResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_sip_ip_address(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListSipIpAddressResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_sip_ip_address(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListSipIpAddressResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_sip_ip_address(connection, account_sid, ip_access_control_list_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -140,7 +167,9 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 
@@ -170,7 +199,9 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_sip_ip_address(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()} | {:error, Tesla.Env.t()}
+  @spec update_sip_ip_address(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipIpAccessControlListSipIpAddress.t()}
+          | {:error, Tesla.Env.t()}
   def update_sip_ip_address(connection, account_sid, ip_access_control_list_sid, sid, opts \\ []) do
     optional_params = %{
       :IpAddress => :form,
@@ -181,7 +212,9 @@ defmodule Heckler.Adapters.Twilio.Api.SipIpAddress do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/IpAccessControlLists/#{ip_access_control_list_sid}/IpAddresses/#{sid}.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])

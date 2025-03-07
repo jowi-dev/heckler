@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.NewKey do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -24,7 +24,8 @@ defmodule Heckler.Adapters.Twilio.Api.NewKey do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountNewKey.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_new_key(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountNewKey.t()} | {:error, Tesla.Env.t()}
+  @spec create_new_key(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountNewKey.t()} | {:error, Tesla.Env.t()}
   def create_new_key(connection, account_sid, opts \\ []) do
     optional_params = %{
       :FriendlyName => :form

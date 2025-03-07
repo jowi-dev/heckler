@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -25,12 +25,20 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_recording_transcription(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_recording_transcription(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_recording_transcription(connection, account_sid, recording_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{recording_sid}/Transcriptions/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{recording_sid}/Transcriptions/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -41,7 +49,7 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -56,12 +64,22 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingTranscription.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_recording_transcription(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingTranscription.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_recording_transcription(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountRecordingRecordingTranscription.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_recording_transcription(connection, account_sid, recording_sid, sid, _opts \\ []) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{recording_sid}/Transcriptions/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{recording_sid}/Transcriptions/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -72,7 +90,7 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -89,7 +107,9 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListRecordingTranscriptionResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_recording_transcription(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListRecordingTranscriptionResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_recording_transcription(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListRecordingTranscriptionResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_recording_transcription(connection, account_sid, recording_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -100,7 +120,9 @@ defmodule Heckler.Adapters.Twilio.Api.RecordingTranscription do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Recordings/#{recording_sid}/Transcriptions.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Recordings/#{recording_sid}/Transcriptions.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

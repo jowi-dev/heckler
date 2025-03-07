@@ -47,7 +47,9 @@ defmodule Heckler.Adapters.Twilio.Api.IncomingPhoneNumber do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_incoming_phone_number(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()} | {:error, Tesla.Env.t()}
+  @spec create_incoming_phone_number(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()}
+          | {:error, Tesla.Env.t()}
   def create_incoming_phone_number(connection, account_sid, opts \\ []) do
     optional_params = %{
       :ApiVersion => :form,
@@ -106,7 +108,8 @@ defmodule Heckler.Adapters.Twilio.Api.IncomingPhoneNumber do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_incoming_phone_number(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_incoming_phone_number(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_incoming_phone_number(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -136,7 +139,9 @@ defmodule Heckler.Adapters.Twilio.Api.IncomingPhoneNumber do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_incoming_phone_number(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_incoming_phone_number(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_incoming_phone_number(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -172,7 +177,9 @@ defmodule Heckler.Adapters.Twilio.Api.IncomingPhoneNumber do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_incoming_phone_number(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_incoming_phone_number(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListIncomingPhoneNumberResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_incoming_phone_number(connection, account_sid, opts \\ []) do
     optional_params = %{
       :Beta => :query,
@@ -236,7 +243,9 @@ defmodule Heckler.Adapters.Twilio.Api.IncomingPhoneNumber do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_incoming_phone_number(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()} | {:error, Tesla.Env.t()}
+  @spec update_incoming_phone_number(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber.t()}
+          | {:error, Tesla.Env.t()}
   def update_incoming_phone_number(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :AccountSid => :form,

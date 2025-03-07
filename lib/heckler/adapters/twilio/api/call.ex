@@ -58,7 +58,8 @@ defmodule Heckler.Adapters.Twilio.Api.Call do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_call(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()} | {:error, Tesla.Env.t()}
+  @spec create_call(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()} | {:error, Tesla.Env.t()}
   def create_call(connection, account_sid, to, from, opts \\ []) do
     optional_params = %{
       :Method => :form,
@@ -127,7 +128,8 @@ defmodule Heckler.Adapters.Twilio.Api.Call do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_call(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_call(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_call(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -157,7 +159,8 @@ defmodule Heckler.Adapters.Twilio.Api.Call do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_call(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_call(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()} | {:error, Tesla.Env.t()}
   def fetch_call(connection, account_sid, sid, _opts \\ []) do
     request =
       %{}
@@ -199,7 +202,8 @@ defmodule Heckler.Adapters.Twilio.Api.Call do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListCallResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_call(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListCallResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_call(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListCallResponse.t()} | {:error, Tesla.Env.t()}
   def list_call(connection, account_sid, opts \\ []) do
     optional_params = %{
       :To => :query,
@@ -255,7 +259,8 @@ defmodule Heckler.Adapters.Twilio.Api.Call do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_call(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()} | {:error, Tesla.Env.t()}
+  @spec update_call(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCall.t()} | {:error, Tesla.Env.t()}
   def update_call(connection, account_sid, sid, opts \\ []) do
     optional_params = %{
       :Url => :form,

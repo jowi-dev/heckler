@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.DependentPhoneNumber do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -27,7 +27,9 @@ defmodule Heckler.Adapters.Twilio.Api.DependentPhoneNumber do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListDependentPhoneNumberResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_dependent_phone_number(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListDependentPhoneNumberResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_dependent_phone_number(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListDependentPhoneNumberResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_dependent_phone_number(connection, account_sid, address_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,
@@ -38,7 +40,9 @@ defmodule Heckler.Adapters.Twilio.Api.DependentPhoneNumber do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Addresses/#{address_sid}/DependentPhoneNumbers.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Addresses/#{address_sid}/DependentPhoneNumbers.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

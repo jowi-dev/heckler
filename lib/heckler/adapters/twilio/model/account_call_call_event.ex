@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountCallCallEvent do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -13,12 +13,11 @@ defmodule Heckler.Adapters.Twilio.Model.AccountCallCallEvent do
   ]
 
   @type t :: %__MODULE__{
-    :request => any() | nil,
-    :response => any() | nil
-  }
+          :request => any() | nil,
+          :response => any() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

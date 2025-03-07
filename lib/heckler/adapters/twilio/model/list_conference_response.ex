@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.ListConferenceResponse do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -20,22 +20,25 @@ defmodule Heckler.Adapters.Twilio.Model.ListConferenceResponse do
   ]
 
   @type t :: %__MODULE__{
-    :conferences => [Heckler.Adapters.Twilio.Model.AccountConference.t] | nil,
-    :end => integer() | nil,
-    :first_page_uri => String.t | nil,
-    :next_page_uri => String.t | nil,
-    :page => integer() | nil,
-    :page_size => integer() | nil,
-    :previous_page_uri => String.t | nil,
-    :start => integer() | nil,
-    :uri => String.t | nil
-  }
+          :conferences => [Heckler.Adapters.Twilio.Model.AccountConference.t()] | nil,
+          :end => integer() | nil,
+          :first_page_uri => String.t() | nil,
+          :next_page_uri => String.t() | nil,
+          :page => integer() | nil,
+          :page_size => integer() | nil,
+          :previous_page_uri => String.t() | nil,
+          :start => integer() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:conferences, :list, Heckler.Adapters.Twilio.Model.AccountConference)
+    |> Deserializer.deserialize(
+      :conferences,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountConference
+    )
   end
 end
-

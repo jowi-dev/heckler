@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountAddress do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -27,26 +27,25 @@ defmodule Heckler.Adapters.Twilio.Model.AccountAddress do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :city => String.t | nil,
-    :customer_name => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :friendly_name => String.t | nil,
-    :iso_country => String.t | nil,
-    :postal_code => String.t | nil,
-    :region => String.t | nil,
-    :sid => String.t | nil,
-    :street => String.t | nil,
-    :uri => String.t | nil,
-    :emergency_enabled => boolean() | nil,
-    :validated => boolean() | nil,
-    :verified => boolean() | nil,
-    :street_secondary => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :city => String.t() | nil,
+          :customer_name => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :iso_country => String.t() | nil,
+          :postal_code => String.t() | nil,
+          :region => String.t() | nil,
+          :sid => String.t() | nil,
+          :street => String.t() | nil,
+          :uri => String.t() | nil,
+          :emergency_enabled => boolean() | nil,
+          :validated => boolean() | nil,
+          :verified => boolean() | nil,
+          :street_secondary => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

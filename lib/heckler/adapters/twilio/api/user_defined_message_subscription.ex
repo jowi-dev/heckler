@@ -27,8 +27,22 @@ defmodule Heckler.Adapters.Twilio.Api.UserDefinedMessageSubscription do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountCallUserDefinedMessageSubscription.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_user_defined_message_subscription(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountCallUserDefinedMessageSubscription.t()} | {:error, Tesla.Env.t()}
-  def create_user_defined_message_subscription(connection, account_sid, call_sid, callback, opts \\ []) do
+  @spec create_user_defined_message_subscription(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountCallUserDefinedMessageSubscription.t()}
+          | {:error, Tesla.Env.t()}
+  def create_user_defined_message_subscription(
+        connection,
+        account_sid,
+        call_sid,
+        callback,
+        opts \\ []
+      ) do
     optional_params = %{
       :IdempotencyKey => :form,
       :Method => :form
@@ -37,7 +51,9 @@ defmodule Heckler.Adapters.Twilio.Api.UserDefinedMessageSubscription do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Calls/#{call_sid}/UserDefinedMessageSubscriptions.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Calls/#{call_sid}/UserDefinedMessageSubscriptions.json"
+      )
       |> add_param(:form, :Callback, callback)
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
@@ -65,12 +81,26 @@ defmodule Heckler.Adapters.Twilio.Api.UserDefinedMessageSubscription do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_user_defined_message_subscription(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
-  def delete_user_defined_message_subscription(connection, account_sid, call_sid, sid, _opts \\ []) do
+  @spec delete_user_defined_message_subscription(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  def delete_user_defined_message_subscription(
+        connection,
+        account_sid,
+        call_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Calls/#{call_sid}/UserDefinedMessageSubscriptions/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Calls/#{call_sid}/UserDefinedMessageSubscriptions/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection

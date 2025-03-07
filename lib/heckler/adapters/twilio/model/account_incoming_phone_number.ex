@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -45,51 +45,75 @@ defmodule Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumber do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :address_sid => String.t | nil,
-    :address_requirements => Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumAddressRequirement.t | nil,
-    :api_version => String.t | nil,
-    :beta => boolean() | nil,
-    :capabilities => Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberCapabilities.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :friendly_name => String.t | nil,
-    :identity_sid => String.t | nil,
-    :phone_number => String.t | nil,
-    :origin => String.t | nil,
-    :sid => String.t | nil,
-    :sms_application_sid => String.t | nil,
-    :sms_fallback_method => String.t | nil,
-    :sms_fallback_url => String.t | nil,
-    :sms_method => String.t | nil,
-    :sms_url => String.t | nil,
-    :status_callback => String.t | nil,
-    :status_callback_method => String.t | nil,
-    :trunk_sid => String.t | nil,
-    :uri => String.t | nil,
-    :voice_receive_mode => Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumVoiceReceiveMode.t | nil,
-    :voice_application_sid => String.t | nil,
-    :voice_caller_id_lookup => boolean() | nil,
-    :voice_fallback_method => String.t | nil,
-    :voice_fallback_url => String.t | nil,
-    :voice_method => String.t | nil,
-    :voice_url => String.t | nil,
-    :emergency_status => Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyStatus.t | nil,
-    :emergency_address_sid => String.t | nil,
-    :emergency_address_status => Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyAddressStatus.t | nil,
-    :bundle_sid => String.t | nil,
-    :status => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :address_sid => String.t() | nil,
+          :address_requirements =>
+            Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumAddressRequirement.t() | nil,
+          :api_version => String.t() | nil,
+          :beta => boolean() | nil,
+          :capabilities =>
+            Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberCapabilities.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :identity_sid => String.t() | nil,
+          :phone_number => String.t() | nil,
+          :origin => String.t() | nil,
+          :sid => String.t() | nil,
+          :sms_application_sid => String.t() | nil,
+          :sms_fallback_method => String.t() | nil,
+          :sms_fallback_url => String.t() | nil,
+          :sms_method => String.t() | nil,
+          :sms_url => String.t() | nil,
+          :status_callback => String.t() | nil,
+          :status_callback_method => String.t() | nil,
+          :trunk_sid => String.t() | nil,
+          :uri => String.t() | nil,
+          :voice_receive_mode =>
+            Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumVoiceReceiveMode.t() | nil,
+          :voice_application_sid => String.t() | nil,
+          :voice_caller_id_lookup => boolean() | nil,
+          :voice_fallback_method => String.t() | nil,
+          :voice_fallback_url => String.t() | nil,
+          :voice_method => String.t() | nil,
+          :voice_url => String.t() | nil,
+          :emergency_status =>
+            Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyStatus.t() | nil,
+          :emergency_address_sid => String.t() | nil,
+          :emergency_address_status =>
+            Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyAddressStatus.t() | nil,
+          :bundle_sid => String.t() | nil,
+          :status => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:address_requirements, :struct, Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumAddressRequirement)
-     |> Deserializer.deserialize(:capabilities, :struct, Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberCapabilities)
-     |> Deserializer.deserialize(:voice_receive_mode, :struct, Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumVoiceReceiveMode)
-     |> Deserializer.deserialize(:emergency_status, :struct, Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyStatus)
-     |> Deserializer.deserialize(:emergency_address_status, :struct, Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyAddressStatus)
+    |> Deserializer.deserialize(
+      :address_requirements,
+      :struct,
+      Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumAddressRequirement
+    )
+    |> Deserializer.deserialize(
+      :capabilities,
+      :struct,
+      Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberCapabilities
+    )
+    |> Deserializer.deserialize(
+      :voice_receive_mode,
+      :struct,
+      Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumVoiceReceiveMode
+    )
+    |> Deserializer.deserialize(
+      :emergency_status,
+      :struct,
+      Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyStatus
+    )
+    |> Deserializer.deserialize(
+      :emergency_address_status,
+      :struct,
+      Heckler.Adapters.Twilio.Model.IncomingPhoneNumberEnumEmergencyAddressStatus
+    )
   end
 end
-

@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountNotification do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -25,24 +25,23 @@ defmodule Heckler.Adapters.Twilio.Model.AccountNotification do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :api_version => String.t | nil,
-    :call_sid => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :error_code => String.t | nil,
-    :log => String.t | nil,
-    :message_date => String.t | nil,
-    :message_text => String.t | nil,
-    :more_info => String.t | nil,
-    :request_method => String.t | nil,
-    :request_url => String.t | nil,
-    :sid => String.t | nil,
-    :uri => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :api_version => String.t() | nil,
+          :call_sid => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :error_code => String.t() | nil,
+          :log => String.t() | nil,
+          :message_date => String.t() | nil,
+          :message_text => String.t() | nil,
+          :more_info => String.t() | nil,
+          :request_method => String.t() | nil,
+          :request_url => String.t() | nil,
+          :sid => String.t() | nil,
+          :uri => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

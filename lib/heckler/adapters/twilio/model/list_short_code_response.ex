@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.ListShortCodeResponse do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -20,22 +20,25 @@ defmodule Heckler.Adapters.Twilio.Model.ListShortCodeResponse do
   ]
 
   @type t :: %__MODULE__{
-    :short_codes => [Heckler.Adapters.Twilio.Model.AccountShortCode.t] | nil,
-    :end => integer() | nil,
-    :first_page_uri => String.t | nil,
-    :next_page_uri => String.t | nil,
-    :page => integer() | nil,
-    :page_size => integer() | nil,
-    :previous_page_uri => String.t | nil,
-    :start => integer() | nil,
-    :uri => String.t | nil
-  }
+          :short_codes => [Heckler.Adapters.Twilio.Model.AccountShortCode.t()] | nil,
+          :end => integer() | nil,
+          :first_page_uri => String.t() | nil,
+          :next_page_uri => String.t() | nil,
+          :page => integer() | nil,
+          :page_size => integer() | nil,
+          :previous_page_uri => String.t() | nil,
+          :start => integer() | nil,
+          :uri => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:short_codes, :list, Heckler.Adapters.Twilio.Model.AccountShortCode)
+    |> Deserializer.deserialize(
+      :short_codes,
+      :list,
+      Heckler.Adapters.Twilio.Model.AccountShortCode
+    )
   end
 end
-

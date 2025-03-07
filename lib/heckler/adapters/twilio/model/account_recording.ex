@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountRecording do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -30,33 +30,40 @@ defmodule Heckler.Adapters.Twilio.Model.AccountRecording do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :api_version => String.t | nil,
-    :call_sid => String.t | nil,
-    :conference_sid => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :start_time => String.t | nil,
-    :duration => String.t | nil,
-    :sid => String.t | nil,
-    :price => String.t | nil,
-    :price_unit => String.t | nil,
-    :status => Heckler.Adapters.Twilio.Model.RecordingEnumStatus.t | nil,
-    :channels => integer() | nil,
-    :source => Heckler.Adapters.Twilio.Model.RecordingEnumSource.t | nil,
-    :error_code => integer() | nil,
-    :uri => String.t | nil,
-    :encryption_details => any() | nil,
-    :subresource_uris => map() | nil,
-    :media_url => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :api_version => String.t() | nil,
+          :call_sid => String.t() | nil,
+          :conference_sid => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :start_time => String.t() | nil,
+          :duration => String.t() | nil,
+          :sid => String.t() | nil,
+          :price => String.t() | nil,
+          :price_unit => String.t() | nil,
+          :status => Heckler.Adapters.Twilio.Model.RecordingEnumStatus.t() | nil,
+          :channels => integer() | nil,
+          :source => Heckler.Adapters.Twilio.Model.RecordingEnumSource.t() | nil,
+          :error_code => integer() | nil,
+          :uri => String.t() | nil,
+          :encryption_details => any() | nil,
+          :subresource_uris => map() | nil,
+          :media_url => String.t() | nil
+        }
 
   alias Heckler.Adapters.Twilio.Deserializer
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:status, :struct, Heckler.Adapters.Twilio.Model.RecordingEnumStatus)
-     |> Deserializer.deserialize(:source, :struct, Heckler.Adapters.Twilio.Model.RecordingEnumSource)
+    |> Deserializer.deserialize(
+      :status,
+      :struct,
+      Heckler.Adapters.Twilio.Model.RecordingEnumStatus
+    )
+    |> Deserializer.deserialize(
+      :source,
+      :struct,
+      Heckler.Adapters.Twilio.Model.RecordingEnumSource
+    )
   end
 end
-

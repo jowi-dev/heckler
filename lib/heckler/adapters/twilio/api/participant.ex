@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -72,7 +72,16 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_participant(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()} | {:error, Tesla.Env.t()}
+  @spec create_participant(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()}
+          | {:error, Tesla.Env.t()}
   def create_participant(connection, account_sid, conference_sid, from, to, opts \\ []) do
     optional_params = %{
       :StatusCallback => :form,
@@ -126,7 +135,9 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants.json"
+      )
       |> add_param(:form, :From, from)
       |> add_param(:form, :To, to)
       |> add_optional_params(optional_params, opts)
@@ -155,12 +166,15 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_participant(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  @spec delete_participant(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, nil} | {:error, Tesla.Env.t()}
   def delete_participant(connection, account_sid, conference_sid, call_sid, _opts \\ []) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants/#{call_sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants/#{call_sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -186,12 +200,16 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_participant(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_participant(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_participant(connection, account_sid, conference_sid, call_sid, _opts \\ []) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants/#{call_sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants/#{call_sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -222,7 +240,9 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListParticipantResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_participant(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListParticipantResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_participant(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListParticipantResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_participant(connection, account_sid, conference_sid, opts \\ []) do
     optional_params = %{
       :Muted => :query,
@@ -236,7 +256,9 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 
@@ -275,7 +297,9 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec update_participant(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()} | {:error, Tesla.Env.t()}
+  @spec update_participant(Tesla.Env.client(), String.t(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountConferenceParticipant.t()}
+          | {:error, Tesla.Env.t()}
   def update_participant(connection, account_sid, conference_sid, call_sid, opts \\ []) do
     optional_params = %{
       :Muted => :form,
@@ -295,7 +319,9 @@ defmodule Heckler.Adapters.Twilio.Api.Participant do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants/#{call_sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/Conferences/#{conference_sid}/Participants/#{call_sid}.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])

@@ -25,19 +25,37 @@ defmodule Heckler.Adapters.Twilio.Api.AuthCallsIpAccessControlListMapping do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_sip_auth_calls_ip_access_control_list_mapping(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.t()} | {:error, Tesla.Env.t()}
-  def create_sip_auth_calls_ip_access_control_list_mapping(connection, account_sid, domain_sid, ip_access_control_list_sid, _opts \\ []) do
+  @spec create_sip_auth_calls_ip_access_control_list_mapping(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.t()}
+          | {:error, Tesla.Env.t()}
+  def create_sip_auth_calls_ip_access_control_list_mapping(
+        connection,
+        account_sid,
+        domain_sid,
+        ip_access_control_list_sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:post)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings.json"
+      )
       |> add_param(:form, :IpAccessControlListSid, ip_access_control_list_sid)
       |> Enum.into([])
 
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {201, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping}
+      {201,
+       Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping}
     ])
   end
 
@@ -57,12 +75,26 @@ defmodule Heckler.Adapters.Twilio.Api.AuthCallsIpAccessControlListMapping do
   - `{:ok, nil}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec delete_sip_auth_calls_ip_access_control_list_mapping(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t()}
-  def delete_sip_auth_calls_ip_access_control_list_mapping(connection, account_sid, domain_sid, sid, _opts \\ []) do
+  @spec delete_sip_auth_calls_ip_access_control_list_mapping(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) :: {:ok, nil} | {:error, Tesla.Env.t()}
+  def delete_sip_auth_calls_ip_access_control_list_mapping(
+        connection,
+        account_sid,
+        domain_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:delete)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
@@ -88,18 +120,36 @@ defmodule Heckler.Adapters.Twilio.Api.AuthCallsIpAccessControlListMapping do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_sip_auth_calls_ip_access_control_list_mapping(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.t()} | {:error, Tesla.Env.t()}
-  def fetch_sip_auth_calls_ip_access_control_list_mapping(connection, account_sid, domain_sid, sid, _opts \\ []) do
+  @spec fetch_sip_auth_calls_ip_access_control_list_mapping(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.t()}
+          | {:error, Tesla.Env.t()}
+  def fetch_sip_auth_calls_ip_access_control_list_mapping(
+        connection,
+        account_sid,
+        domain_sid,
+        sid,
+        _opts \\ []
+      ) do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings/#{sid}.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings/#{sid}.json"
+      )
       |> Enum.into([])
 
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping}
+      {200,
+       Heckler.Adapters.Twilio.Model.AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping}
     ])
   end
 
@@ -121,8 +171,21 @@ defmodule Heckler.Adapters.Twilio.Api.AuthCallsIpAccessControlListMapping do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListSipAuthCallsIpAccessControlListMappingResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_sip_auth_calls_ip_access_control_list_mapping(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListSipAuthCallsIpAccessControlListMappingResponse.t()} | {:error, Tesla.Env.t()}
-  def list_sip_auth_calls_ip_access_control_list_mapping(connection, account_sid, domain_sid, opts \\ []) do
+  @spec list_sip_auth_calls_ip_access_control_list_mapping(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok,
+           Heckler.Adapters.Twilio.Model.ListSipAuthCallsIpAccessControlListMappingResponse.t()}
+          | {:error, Tesla.Env.t()}
+  def list_sip_auth_calls_ip_access_control_list_mapping(
+        connection,
+        account_sid,
+        domain_sid,
+        opts \\ []
+      ) do
     optional_params = %{
       :PageSize => :query,
       :Page => :query,
@@ -132,7 +195,9 @@ defmodule Heckler.Adapters.Twilio.Api.AuthCallsIpAccessControlListMapping do
     request =
       %{}
       |> method(:get)
-      |> url("/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings.json")
+      |> url(
+        "/2010-04-01/Accounts/#{account_sid}/SIP/Domains/#{domain_sid}/Auth/Calls/IpAccessControlListMappings.json"
+      )
       |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 

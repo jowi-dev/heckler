@@ -15,14 +15,13 @@ defmodule Heckler.Adapters.Twilio.Model.AccountIncomingPhoneNumberCapabilities d
   ]
 
   @type t :: %__MODULE__{
-    :mms => boolean() | nil,
-    :sms => boolean() | nil,
-    :voice => boolean() | nil,
-    :fax => boolean() | nil
-  }
+          :mms => boolean() | nil,
+          :sms => boolean() | nil,
+          :voice => boolean() | nil,
+          :fax => boolean() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

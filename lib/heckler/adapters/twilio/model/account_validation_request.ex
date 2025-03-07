@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountValidationRequest do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -16,15 +16,14 @@ defmodule Heckler.Adapters.Twilio.Model.AccountValidationRequest do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :call_sid => String.t | nil,
-    :friendly_name => String.t | nil,
-    :phone_number => String.t | nil,
-    :validation_code => String.t | nil
-  }
+          :account_sid => String.t() | nil,
+          :call_sid => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :phone_number => String.t() | nil,
+          :validation_code => String.t() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-

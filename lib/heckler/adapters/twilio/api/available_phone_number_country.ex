@@ -10,7 +10,7 @@ defmodule Heckler.Adapters.Twilio.Api.AvailablePhoneNumberCountry do
   import Heckler.Adapters.Twilio.RequestBuilder
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -24,7 +24,14 @@ defmodule Heckler.Adapters.Twilio.Api.AvailablePhoneNumberCountry do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountry.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec fetch_available_phone_number_country(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountry.t()} | {:error, Tesla.Env.t()}
+  @spec fetch_available_phone_number_country(
+          Tesla.Env.client(),
+          String.t(),
+          String.t(),
+          keyword()
+        ) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountAvailablePhoneNumberCountry.t()}
+          | {:error, Tesla.Env.t()}
   def fetch_available_phone_number_country(connection, account_sid, country_code, _opts \\ []) do
     request =
       %{}
@@ -40,7 +47,7 @@ defmodule Heckler.Adapters.Twilio.Api.AvailablePhoneNumberCountry do
   end
 
   @doc """
-  
+
 
   ### Parameters
 
@@ -56,7 +63,9 @@ defmodule Heckler.Adapters.Twilio.Api.AvailablePhoneNumberCountry do
   - `{:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberCountryResponse.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec list_available_phone_number_country(Tesla.Env.client, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberCountryResponse.t()} | {:error, Tesla.Env.t()}
+  @spec list_available_phone_number_country(Tesla.Env.client(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.ListAvailablePhoneNumberCountryResponse.t()}
+          | {:error, Tesla.Env.t()}
   def list_available_phone_number_country(connection, account_sid, opts \\ []) do
     optional_params = %{
       :PageSize => :query,

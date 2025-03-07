@@ -25,7 +25,9 @@ defmodule Heckler.Adapters.Twilio.Api.Feedback do
   - `{:ok, Heckler.Adapters.Twilio.Model.AccountMessageMessageFeedback.t()}` on success
   - `{:error, Tesla.Env.t()}` on failure
   """
-  @spec create_message_feedback(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, Heckler.Adapters.Twilio.Model.AccountMessageMessageFeedback.t()} | {:error, Tesla.Env.t()}
+  @spec create_message_feedback(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+          {:ok, Heckler.Adapters.Twilio.Model.AccountMessageMessageFeedback.t()}
+          | {:error, Tesla.Env.t()}
   def create_message_feedback(connection, account_sid, message_sid, opts \\ []) do
     optional_params = %{
       :Outcome => :form

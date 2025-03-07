@@ -3,7 +3,7 @@
 
 defmodule Heckler.Adapters.Twilio.Model.AccountApplication do
   @moduledoc """
-  
+
   """
 
   @derive Jason.Encoder
@@ -32,31 +32,30 @@ defmodule Heckler.Adapters.Twilio.Model.AccountApplication do
   ]
 
   @type t :: %__MODULE__{
-    :account_sid => String.t | nil,
-    :api_version => String.t | nil,
-    :date_created => String.t | nil,
-    :date_updated => String.t | nil,
-    :friendly_name => String.t | nil,
-    :message_status_callback => String.t | nil,
-    :sid => String.t | nil,
-    :sms_fallback_method => String.t | nil,
-    :sms_fallback_url => String.t | nil,
-    :sms_method => String.t | nil,
-    :sms_status_callback => String.t | nil,
-    :sms_url => String.t | nil,
-    :status_callback => String.t | nil,
-    :status_callback_method => String.t | nil,
-    :uri => String.t | nil,
-    :voice_caller_id_lookup => boolean() | nil,
-    :voice_fallback_method => String.t | nil,
-    :voice_fallback_url => String.t | nil,
-    :voice_method => String.t | nil,
-    :voice_url => String.t | nil,
-    :public_application_connect_enabled => boolean() | nil
-  }
+          :account_sid => String.t() | nil,
+          :api_version => String.t() | nil,
+          :date_created => String.t() | nil,
+          :date_updated => String.t() | nil,
+          :friendly_name => String.t() | nil,
+          :message_status_callback => String.t() | nil,
+          :sid => String.t() | nil,
+          :sms_fallback_method => String.t() | nil,
+          :sms_fallback_url => String.t() | nil,
+          :sms_method => String.t() | nil,
+          :sms_status_callback => String.t() | nil,
+          :sms_url => String.t() | nil,
+          :status_callback => String.t() | nil,
+          :status_callback_method => String.t() | nil,
+          :uri => String.t() | nil,
+          :voice_caller_id_lookup => boolean() | nil,
+          :voice_fallback_method => String.t() | nil,
+          :voice_fallback_url => String.t() | nil,
+          :voice_method => String.t() | nil,
+          :voice_url => String.t() | nil,
+          :public_application_connect_enabled => boolean() | nil
+        }
 
   def decode(value) do
     value
   end
 end
-
