@@ -22,17 +22,15 @@ if config_env() in [:dev, :test] do
     queues: [notifications: 10]
 
   # Configure Heckler to use its own Twilio adapter
-  config :heckler, Heckler,
-    sms_adapter: Heckler.Adapters.Twilio
+  config :heckler, Heckler, sms_adapter: Heckler.Adapters.Twilio
 end
 
 # Configure Twilio adapter from environment variables
-config :heckler, Heckler.Adapters.Twilio, [
+config :heckler, Heckler.Adapters.Twilio,
   account_sid: System.get_env("TWILIO_ACCOUNT_SID"),
   auth_token: System.get_env("TWILIO_AUTH_TOKEN"),
   from_number: System.get_env("TWILIO_FROM_NUMBER"),
   message_service_sid: System.get_env("TWILIO_MESSAGE_SERVICE_SID")
-]
 
 # APNS configuration for token based authentication
 config :heckler, Heckler.APNS,

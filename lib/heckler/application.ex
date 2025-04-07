@@ -5,7 +5,7 @@ defmodule Heckler.Application do
 
   @impl true
   def start(_type, _args) do
-    children = 
+    children =
       []
       |> add_repo_if_development()
       |> add_oban_if_configured()
@@ -20,7 +20,7 @@ defmodule Heckler.Application do
     if Mix.env() in [:dev, :test] do
       # Check if we're running as a standalone application (not as a dependency)
       app_name = Mix.Project.config()[:app]
-      
+
       if app_name == :heckler do
         # We're in the Heckler project itself, use our dev Repo
         if Code.ensure_loaded?(Ecto) do
@@ -40,7 +40,7 @@ defmodule Heckler.Application do
   # Add Oban if configured
   defp add_oban_if_configured(children) do
     oban_config = Application.get_env(:heckler, Oban, [])
-    
+
     if oban_config != [] && Code.ensure_loaded?(Oban) do
       children ++ [{Oban, oban_config}]
     else
@@ -51,7 +51,7 @@ defmodule Heckler.Application do
   # Add APNS service if configured
   defp add_apns_if_configured(children) do
     apns_opts = Application.get_env(:heckler, Heckler.APNS)
-    
+
     if apns_opts && Code.ensure_loaded?(Pigeon.APNS) do
       children ++ [{Heckler.APNS, apns_opts}]
     else
@@ -64,10 +64,10 @@ end
 if Mix.env() in [:dev, :test] do
   defmodule Heckler.DevRepo do
     @moduledoc false
-    use Ecto.Repo, 
+    use Ecto.Repo,
       otp_app: :heckler,
       adapter: Ecto.Adapters.Postgres
-    
+
     def init(_type, config) do
       # Allow runtime configuration for local development
       {:ok, config}
