@@ -100,23 +100,15 @@ defmodule Heckler.SMS do
          "No SMS adapter configured. Configure one with config :your_app, Heckler, sms_adapter: YourAdapter"}
 
       adapter when is_atom(adapter) ->
+        IO.inspect(adapter, limit: :infinity, pretty: true, label: "adapter is")
         adapter.send_sms(to, message)
     end
   end
 
-  # Try to get the SMS adapter from various possible configurations
+  # Get the SMS adapter from configuration
   defp get_sms_adapter do
     app = Application.get_application(__MODULE__) || :heckler
-
-    # First check for adapter in host application's config
     config = Application.get_env(app, Heckler) || []
-    adapter = config[:sms_adapter]
-
-    # Fall back to directly configured adapter in development/test
-    if is_nil(adapter) && (Mix.env() == :dev || Mix.env() == :test) do
-      Application.get_env(:heckler, __MODULE__)[:adapter]
-    else
-      adapter
-    end
+    config[:sms_adapter]
   end
 end

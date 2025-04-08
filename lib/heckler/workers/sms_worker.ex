@@ -98,9 +98,9 @@ defmodule Heckler.Workers.SMSWorker do
     } = args
 
     # Get the adapter module (default to Twilio)
-    adapter_module = get_adapter_module(args)
+    adapter_module = get_adapter_module()
 
-    # Extract options 
+    # Extract options
     options = Map.get(args, "options", %{})
     scheduled_at = Map.get(args, "scheduled_at")
 
@@ -171,25 +171,10 @@ defmodule Heckler.Workers.SMSWorker do
     end
   end
 
-  @doc false
-  defp get_adapter_module(args) do
-    adapter = Map.get(args, "adapter", "Heckler.Adapters.Twilio")
-
-    case adapter do
-      adapter when is_binary(adapter) ->
-        # Check if the module exists before converting
-        try do
-          String.to_existing_atom(adapter)
-        rescue
-          ArgumentError -> Heckler.Adapters.Twilio
-        end
-
-      adapter when is_atom(adapter) ->
-        adapter
-
-      _ ->
-        Heckler.Adapters.Twilio
-    end
+  defp get_adapter_module do
+    app = Application.get_application(__MODULE__) || :heckler
+    config = Application.get_env(app, Heckler) || []
+    config[:sms_adapter]
   end
 
   @doc false

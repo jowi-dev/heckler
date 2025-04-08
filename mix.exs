@@ -78,7 +78,8 @@ defmodule Heckler.MixProject do
       {:dialyxir, "~> 1.0", only: [:test, :dev], runtime: false},
       {:ex_doc, "~> 0.36.1", only: [:test, :dev], runtime: false},
       {:excoveralls, "~> 0.16", only: :test},
-      {:makeup_diff, "~> 0.1", only: [:test, :dev], runtime: false}
+      {:makeup_diff, "~> 0.1", only: [:test, :dev], runtime: false},
+      {:mox, "~> 1.2", only: [:test]}
     ]
   end
 

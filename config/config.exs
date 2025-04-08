@@ -25,6 +25,8 @@ if config_env() in [:dev, :test] do
   config :heckler, Heckler, sms_adapter: Heckler.Adapters.Twilio
 end
 
+config :heckler, Heckler, sms_adapter: Heckler.Adapters.Twilio
+
 # Configure Twilio adapter from environment variables
 config :heckler, Heckler.Adapters.Twilio,
   account_sid: System.get_env("TWILIO_ACCOUNT_SID"),
@@ -45,3 +47,5 @@ config :tesla, adapter: Tesla.Adapter.Hackney
 
 # Configure Tesla HTTP options for Twilio connection
 config :tesla, Heckler.Adapters.Twilio.Connection, adapter: Tesla.Adapter.Hackney
+
+import_config "#{config_env()}.exs"
