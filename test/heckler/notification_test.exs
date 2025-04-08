@@ -47,7 +47,7 @@ defmodule Heckler.NotificationTest do
       assert changeset.valid?
 
       # Check that optional fields were included
-      assert {:ok, changes} =  Ecto.Changeset.apply_action(changeset, :update)
+      assert {:ok, changes} = Ecto.Changeset.apply_action(changeset, :update)
       assert changes.from == "+17775553333"
       assert changes.status == "pending"
       assert Map.has_key?(changes, :scheduled_at)
